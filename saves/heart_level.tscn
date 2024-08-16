@@ -5,12 +5,38 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Backdrops" type="Node2D" parent="."]
+
+[node name="Background" type="ColorRect" parent="Backdrops"]
 offset_left = -16005.0
 offset_top = -7616.0
 offset_right = 17765.0
 offset_bottom = 8849.0
 color = Color(0.25098, 0.027451, 0.027451, 1)
+
+[node name="Red Path" type="ColorRect" parent="Backdrops"]
+offset_left = -64.0
+offset_top = 1999.0
+offset_right = 1.0
+offset_bottom = 2021.0
+scale = Vector2(2.87416, 115.873)
+color = Color(0.784314, 0.0823529, 0.0823529, 1)
+
+[node name="Red Path2" type="ColorRect" parent="Backdrops"]
+offset_left = -64.0
+offset_top = 2000.0
+offset_right = -57.0
+offset_bottom = 2022.0
+scale = Vector2(2.87416, 115.873)
+color = Color(0.854902, 0.160784, 0.160784, 1)
+
+[node name="Red Path3" type="ColorRect" parent="Backdrops"]
+offset_left = 114.0
+offset_top = 1994.0
+offset_right = 119.0
+offset_bottom = 2016.0
+scale = Vector2(2.87416, 115.873)
+color = Color(0.854902, 0.160784, 0.160784, 1)
 
 [node name="Heart Map" parent="." instance=ExtResource("1_n6bvx")]
 

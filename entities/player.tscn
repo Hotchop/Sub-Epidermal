@@ -9,7 +9,7 @@ radius = 8.0
 height = 34.0
 
 [sub_resource type="Gradient" id="Gradient_bkj0i"]
-offsets = PackedFloat32Array(0, 0.798701)
+offsets = PackedFloat32Array(0.181818, 0.681818)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_oa7e1"]
@@ -38,6 +38,7 @@ randomness = 0.16
 texture = ExtResource("2_pimwa")
 emission_shape = 3
 emission_rect_extents = Vector2(5, 1)
+direction = Vector2(0, 1)
 gravity = Vector2(0, -980)
 scale_amount_min = 0.3
 scale_amount_max = 0.5
@@ -54,3 +55,4 @@ zoom = Vector2(2, 2)
 position = Vector2(0, 5.33333)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_oa7e1")
+texture_scale = 1.5
