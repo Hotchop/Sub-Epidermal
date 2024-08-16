@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bacxitw523mgg"]
+
+[ext_resource type="Texture2D" uid="uid://dhvyd34ygbf8p" path="res://assets/sprites/submarine.png" id="1_0btk8"]
+[ext_resource type="Script" path="res://entities/player.gd" id="2_3qnp6"]
+[ext_resource type="Texture2D" uid="uid://cyx6a3jow3ny5" path="res://assets/fx/bubble.png" id="2_pimwa"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1uh75"]
+radius = 8.0
+height = 34.0
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+motion_mode = 1
+script = ExtResource("2_3qnp6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0btk8")
+flip_h = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+position = Vector2(0, 6.66667)
+amount = 2
+lifetime = 0.7
+speed_scale = 0.4
+explosiveness = 0.3
+randomness = 0.16
+texture = ExtResource("2_pimwa")
+emission_shape = 3
+emission_rect_extents = Vector2(5, 1)
+gravity = Vector2(0, -980)
+scale_amount_min = 0.3
+scale_amount_max = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5.33333)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_1uh75")
+
+[node name="Camera2D" type="Camera2D" parent="."]
