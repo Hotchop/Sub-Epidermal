@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bacxitw523mgg"]
+[gd_scene load_steps=7 format=3 uid="uid://bacxitw523mgg"]
 
 [ext_resource type="Texture2D" uid="uid://dhvyd34ygbf8p" path="res://assets/sprites/submarine.png" id="1_0btk8"]
 [ext_resource type="Script" path="res://entities/player.gd" id="2_3qnp6"]
@@ -7,6 +7,16 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1uh75"]
 radius = 8.0
 height = 34.0
+
+[sub_resource type="Gradient" id="Gradient_bkj0i"]
+offsets = PackedFloat32Array(0, 0.798701)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oa7e1"]
+gradient = SubResource("Gradient_bkj0i")
+fill = 1
+fill_from = Vector2(0.509174, 0.495413)
+fill_to = Vector2(0, 0)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3, 3)
@@ -38,3 +48,9 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_1uh75")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 5.33333)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_oa7e1")

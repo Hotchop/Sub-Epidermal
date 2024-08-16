@@ -1,56 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtiikx4w6vkwn"]
+[gd_scene load_steps=3 format=3 uid="uid://dtiikx4w6vkwn"]
 
+[ext_resource type="PackedScene" uid="uid://d18b8gy8y6nfl" path="res://maps/heart_map.tscn" id="1_n6bvx"]
 [ext_resource type="PackedScene" uid="uid://bacxitw523mgg" path="res://entities/player.tscn" id="1_ol24k"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_ol24k")]
-position = Vector2(958, 543)
-
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 339.0
-offset_top = 205.0
-offset_right = 453.0
-offset_bottom = 353.0
+offset_left = -16005.0
+offset_top = -7616.0
+offset_right = 17765.0
+offset_bottom = 8849.0
+color = Color(0.25098, 0.027451, 0.027451, 1)
 
-[node name="ColorRect" type="ColorRect" parent="ColorRect"]
-layout_mode = 0
-offset_left = 1214.0
-offset_top = 138.0
-offset_right = 1328.0
-offset_bottom = 286.0
+[node name="Heart Map" parent="." instance=ExtResource("1_n6bvx")]
 
-[node name="ColorRect" type="ColorRect" parent="ColorRect/ColorRect"]
-layout_mode = 0
-offset_left = -293.0
-offset_top = 410.0
-offset_right = -179.0
-offset_bottom = 558.0
-
-[node name="ColorRect" type="ColorRect" parent="ColorRect/ColorRect/ColorRect"]
-layout_mode = 0
-offset_left = -620.0
-offset_top = 97.0
-offset_right = -506.0
-offset_bottom = 245.0
-
-[node name="ColorRect" type="ColorRect" parent="ColorRect/ColorRect/ColorRect/ColorRect"]
-layout_mode = 0
-offset_left = 315.0
-offset_top = -727.0
-offset_right = 429.0
-offset_bottom = -579.0
-
-[node name="ColorRect" type="ColorRect" parent="ColorRect/ColorRect/ColorRect/ColorRect/ColorRect"]
-layout_mode = 0
-offset_left = -1198.0
-offset_top = 343.0
-offset_right = -1084.0
-offset_bottom = 491.0
-
-[node name="ColorRect" type="ColorRect" parent="ColorRect/ColorRect/ColorRect/ColorRect/ColorRect/ColorRect"]
-layout_mode = 0
-offset_left = -115.0
-offset_top = 144.0
-offset_right = -1.0
-offset_bottom = 292.0
+[node name="Player" parent="." instance=ExtResource("1_ol24k")]
+position = Vector2(0, -4)
+scale = Vector2(2, 2)
