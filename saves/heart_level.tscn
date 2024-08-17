@@ -1,10 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://dtiikx4w6vkwn"]
+[gd_scene load_steps=26 format=3 uid="uid://dtiikx4w6vkwn"]
 
+[ext_resource type="Script" path="res://saves/heart_level.gd" id="1_2io76"]
 [ext_resource type="PackedScene" uid="uid://d18b8gy8y6nfl" path="res://maps/heart_map.tscn" id="1_n6bvx"]
 [ext_resource type="PackedScene" uid="uid://bacxitw523mgg" path="res://entities/player.tscn" id="1_ol24k"]
 [ext_resource type="PackedScene" uid="uid://d07e7av40yjvt" path="res://entities/stone.tscn" id="3_h1jfv"]
 [ext_resource type="Texture2D" uid="uid://d1e56aeigpka1" path="res://assets/ui/UI Pack.png" id="3_p6vud"]
+[ext_resource type="PackedScene" uid="uid://b8a1yhkf5rqso" path="res://entities/white_cell.tscn" id="5_0fmnp"]
 [ext_resource type="PackedScene" uid="uid://dt5gcj2pa2cpc" path="res://global/dialog_popup.tscn" id="5_ptxo0"]
+[ext_resource type="PackedScene" uid="uid://cc2l1ks8shknq" path="res://entities/blood_cell.tscn" id="6_icmee"]
+[ext_resource type="PackedScene" uid="uid://c70154gk5jebi" path="res://entities/big_stone.tscn" id="9_d13a4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p372y"]
 atlas = ExtResource("3_p6vud")
@@ -95,7 +99,8 @@ region = Rect2(579, 83, 42, 11)
 atlas = ExtResource("3_p6vud")
 region = Rect2(631, 118, 34, 5)
 
-[node name="Node2D" type="Node2D"]
+[node name="Heart Level" type="Node2D"]
+script = ExtResource("1_2io76")
 
 [node name="Backdrops" type="Node2D" parent="."]
 position = Vector2(992, 537)
@@ -133,10 +138,6 @@ color = Color(0.854902, 0.160784, 0.160784, 1)
 
 [node name="Heart Map" parent="." instance=ExtResource("1_n6bvx")]
 position = Vector2(992, 537)
-
-[node name="Player" parent="." instance=ExtResource("1_ol24k")]
-position = Vector2(992, 533)
-scale = Vector2(2, 2)
 
 [node name="Objects" type="Node" parent="."]
 
@@ -179,6 +180,52 @@ scale = Vector2(5.65318, 5.65318)
 position = Vector2(2314, -220)
 rotation = 0.258105
 scale = Vector2(6.82099, 6.82099)
+
+[node name="Big Stone" parent="Objects" instance=ExtResource("9_d13a4")]
+position = Vector2(1024, 1090)
+scale = Vector2(2.5, 2.5)
+
+[node name="Pick Ups" type="Node" parent="."]
+
+[node name="White Cell" parent="Pick Ups" instance=ExtResource("5_0fmnp")]
+position = Vector2(138, 2270)
+scale = Vector2(0.2, 0.2)
+
+[node name="White Cell2" parent="Pick Ups" instance=ExtResource("5_0fmnp")]
+position = Vector2(-698, -1013)
+scale = Vector2(0.2, 0.2)
+
+[node name="White Cell3" parent="Pick Ups" instance=ExtResource("5_0fmnp")]
+position = Vector2(2123, -1195)
+scale = Vector2(0.2, 0.2)
+
+[node name="White Cell4" parent="Pick Ups" instance=ExtResource("5_0fmnp")]
+position = Vector2(1917, 599)
+scale = Vector2(0.2, 0.2)
+
+[node name="White Cell5" parent="Pick Ups" instance=ExtResource("5_0fmnp")]
+position = Vector2(2534, 2245)
+scale = Vector2(0.2, 0.2)
+
+[node name="Blood Cell" parent="Pick Ups" groups=["Blood Cells"] instance=ExtResource("6_icmee")]
+position = Vector2(-594, 2422)
+scale = Vector2(0.2, 0.2)
+
+[node name="Blood Cell2" parent="Pick Ups" groups=["Blood Cells"] instance=ExtResource("6_icmee")]
+position = Vector2(1746, -390)
+scale = Vector2(0.2, 0.2)
+
+[node name="Blood Cell3" parent="Pick Ups" groups=["Blood Cells"] instance=ExtResource("6_icmee")]
+position = Vector2(-112, -638)
+scale = Vector2(0.2, 0.2)
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("1_ol24k")]
+top_level = true
+visibility_layer = 3
+position = Vector2(992, 533)
+scale = Vector2(2, 2)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -234,6 +281,9 @@ scale = Vector2(0.5, 0.5)
 text = "OXIGEN"
 horizontal_alignment = 1
 
+[node name="Timer" type="Timer" parent="CanvasLayer/Progress Bars/Oxigen"]
+autostart = true
+
 [node name="WB Cell Counter" type="AnimatedSprite2D" parent="CanvasLayer/Progress Bars"]
 position = Vector2(117, 191)
 scale = Vector2(6, 6)
@@ -273,3 +323,16 @@ offset_top = 733.0
 offset_right = -885.0
 offset_bottom = -115.0
 scale = Vector2(1.68, 1.68)
+
+[connection signal="body_entered" from="Objects/Big Stone/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="picked_up" from="Pick Ups/White Cell" to="." method="_on_white_cell_picked_up"]
+[connection signal="picked_up" from="Pick Ups/White Cell2" to="." method="_on_white_cell_2_picked_up"]
+[connection signal="picked_up" from="Pick Ups/White Cell3" to="." method="_on_white_cell_3_picked_up"]
+[connection signal="picked_up" from="Pick Ups/White Cell4" to="." method="_on_white_cell_4_picked_up"]
+[connection signal="picked_up" from="Pick Ups/White Cell5" to="." method="_on_white_cell_5_picked_up"]
+[connection signal="health_full" from="Pick Ups/Blood Cell" to="." method="_on_blood_cell_health_full"]
+[connection signal="health_full" from="Pick Ups/Blood Cell2" to="." method="_on_blood_cell_2_health_full"]
+[connection signal="health_full" from="Pick Ups/Blood Cell3" to="." method="_on_blood_cell_3_health_full"]
+[connection signal="timeout" from="CanvasLayer/Progress Bars/Oxigen/Timer" to="." method="_on_timer_timeout"]
+
+[editable path="Objects/Big Stone"]

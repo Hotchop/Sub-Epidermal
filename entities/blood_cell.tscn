@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://cc2l1ks8shknq"]
+
+[ext_resource type="Script" path="res://entities/blood_cell.gd" id="1_e6wya"]
+[ext_resource type="Texture2D" uid="uid://dubr72qxfc7xh" path="res://assets/sprites/blood_cell.png" id="1_gkula"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1tv3"]
+atlas = ExtResource("1_gkula")
+region = Rect2(0, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8no3"]
+atlas = ExtResource("1_gkula")
+region = Rect2(200, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuel6"]
+atlas = ExtResource("1_gkula")
+region = Rect2(400, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5gko"]
+atlas = ExtResource("1_gkula")
+region = Rect2(600, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37kp0"]
+atlas = ExtResource("1_gkula")
+region = Rect2(800, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3t6e"]
+atlas = ExtResource("1_gkula")
+region = Rect2(1000, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghuug"]
+atlas = ExtResource("1_gkula")
+region = Rect2(1200, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwocx"]
+atlas = ExtResource("1_gkula")
+region = Rect2(1400, 0, 200, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n15b1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1tv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8no3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuel6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5gko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37kp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3t6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghuug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwocx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gl4y0"]
+radius = 35.9998
+height = 181.999
+
+[node name="Blood Cell" type="Area2D"]
+script = ExtResource("1_e6wya")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n15b1")
+autoplay = "default"
+frame_progress = 0.934915
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+rotation = 1.5743
+shape = SubResource("CapsuleShape2D_gl4y0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

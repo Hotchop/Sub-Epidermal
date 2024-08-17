@@ -1,7 +1,69 @@
-[gd_scene load_steps=3 format=3 uid="uid://dt5gcj2pa2cpc"]
+[gd_scene load_steps=7 format=3 uid="uid://dt5gcj2pa2cpc"]
 
 [ext_resource type="Texture2D" uid="uid://bydde0dkqphc7" path="res://assets/ui/Text Banner.png" id="1_25tkb"]
+[ext_resource type="Script" path="res://global/dialog_popup.gd" id="1_jmipg"]
 [ext_resource type="Texture2D" uid="uid://dhvyd34ygbf8p" path="res://assets/sprites/submarine.png" id="2_dcyqk"]
+
+[sub_resource type="Animation" id="Animation_fw25t"]
+resource_name = "popup"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Banner:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Banner/RichTextLabel:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.266667, 2.26667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_klbpw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Banner:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Banner/RichTextLabel:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rk83o"]
+_data = {
+"RESET": SubResource("Animation_klbpw"),
+"popup": SubResource("Animation_fw25t")
+}
 
 [node name="Dialog Popup" type="Control"]
 layout_mode = 3
@@ -12,6 +74,7 @@ offset_right = -1261.0
 offset_bottom = -881.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_jmipg")
 
 [node name="Banner" type="Sprite2D" parent="."]
 position = Vector2(409, 123)
@@ -28,8 +91,13 @@ visible_characters = 0
 visible_ratio = 0.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Character" type="Sprite2D" parent="."]
-position = Vector2(114, 75)
+[node name="Character" type="Sprite2D" parent="Banner"]
+position = Vector2(-295, -48)
 scale = Vector2(7, 7)
 texture = ExtResource("2_dcyqk")
 flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rk83o")
+}

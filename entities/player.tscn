@@ -110,7 +110,7 @@ texture_scale = 1.5
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pil8e")
 autoplay = "default"
-frame_progress = 0.518901
+frame_progress = 0.222077
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5.33333)

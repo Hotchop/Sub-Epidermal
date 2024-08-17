@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://b8a1yhkf5rqso"]
+
+[ext_resource type="Texture2D" uid="uid://brs6lu4wxwbwu" path="res://assets/sprites/white_cell.png" id="1_1kley"]
+[ext_resource type="Script" path="res://entities/white_cell.gd" id="1_rkjo5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbs83"]
+atlas = ExtResource("1_1kley")
+region = Rect2(0, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6chfq"]
+atlas = ExtResource("1_1kley")
+region = Rect2(200, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_324s0"]
+atlas = ExtResource("1_1kley")
+region = Rect2(400, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oieoo"]
+atlas = ExtResource("1_1kley")
+region = Rect2(600, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k38eo"]
+atlas = ExtResource("1_1kley")
+region = Rect2(800, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76m2t"]
+atlas = ExtResource("1_1kley")
+region = Rect2(1000, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jutio"]
+atlas = ExtResource("1_1kley")
+region = Rect2(1200, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd4c5"]
+atlas = ExtResource("1_1kley")
+region = Rect2(1400, 0, 200, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u0pcl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbs83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6chfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_324s0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oieoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k38eo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76m2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jutio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd4c5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lctnq"]
+radius = 36.9994
+height = 185.997
+
+[node name="White Cell" type="Area2D"]
+script = ExtResource("1_rkjo5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_u0pcl")
+autoplay = "default"
+frame_progress = 0.18007
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.39698e-09, 3)
+rotation = 1.56513
+shape = SubResource("CapsuleShape2D_lctnq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
