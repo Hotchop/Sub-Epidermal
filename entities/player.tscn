@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bacxitw523mgg"]
+[gd_scene load_steps=17 format=3 uid="uid://bacxitw523mgg"]
 
-[ext_resource type="Texture2D" uid="uid://dhvyd34ygbf8p" path="res://assets/sprites/submarine.png" id="1_0btk8"]
 [ext_resource type="Script" path="res://entities/player.gd" id="2_3qnp6"]
 [ext_resource type="Texture2D" uid="uid://cyx6a3jow3ny5" path="res://assets/fx/bubble.png" id="2_pimwa"]
+[ext_resource type="Texture2D" uid="uid://c4g4ivnt7jskx" path="res://assets/sprites/submarine_sheet.png" id="3_s5j6u"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_u7yd6"]
 
@@ -16,12 +16,8 @@ scale_max = 0.5
 turbulence_enabled = true
 collision_mode = 2
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1uh75"]
-radius = 8.0
-height = 34.0
-
 [sub_resource type="Gradient" id="Gradient_bkj0i"]
-offsets = PackedFloat32Array(0.181818, 0.681818)
+offsets = PackedFloat32Array(0.409091, 0.701299)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_oa7e1"]
@@ -29,6 +25,67 @@ gradient = SubResource("Gradient_bkj0i")
 fill = 1
 fill_from = Vector2(0.509174, 0.495413)
 fill_to = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6x1l"]
+atlas = ExtResource("3_s5j6u")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ocyg"]
+atlas = ExtResource("3_s5j6u")
+region = Rect2(33, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mt4x8"]
+atlas = ExtResource("3_s5j6u")
+region = Rect2(66, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vv7a"]
+atlas = ExtResource("3_s5j6u")
+region = Rect2(99, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t41cl"]
+atlas = ExtResource("3_s5j6u")
+region = Rect2(132, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwiq8"]
+atlas = ExtResource("3_s5j6u")
+region = Rect2(165, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lug12"]
+atlas = ExtResource("3_s5j6u")
+region = Rect2(198, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pil8e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6x1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ocyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mt4x8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vv7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t41cl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwiq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lug12")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1uh75"]
+radius = 8.0
+height = 34.0
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3, 3)
@@ -43,9 +100,17 @@ texture = ExtResource("2_pimwa")
 lifetime = 2.0
 speed_scale = 1.5
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_0btk8")
-flip_h = true
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 5.33333)
+energy = 0.8
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_oa7e1")
+texture_scale = 1.5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pil8e")
+autoplay = "default"
+frame_progress = 0.518901
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5.33333)
@@ -54,9 +119,3 @@ shape = SubResource("CapsuleShape2D_1uh75")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(0, 5.33333)
-shadow_enabled = true
-texture = SubResource("GradientTexture2D_oa7e1")
-texture_scale = 1.5

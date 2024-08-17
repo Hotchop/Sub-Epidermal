@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt5gcj2pa2cpc"]
+
+[ext_resource type="Texture2D" uid="uid://bydde0dkqphc7" path="res://assets/ui/Text Banner.png" id="1_25tkb"]
+[ext_resource type="Texture2D" uid="uid://dhvyd34ygbf8p" path="res://assets/sprites/submarine.png" id="2_dcyqk"]
+
+[node name="Dialog Popup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1261.0
+offset_bottom = -881.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Banner" type="Sprite2D" parent="."]
+position = Vector2(409, 123)
+texture = ExtResource("1_25tkb")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Banner"]
+offset_left = -167.0
+offset_top = -55.0
+offset_right = 219.0
+offset_bottom = 46.0
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercit."
+scroll_active = false
+visible_characters = 0
+visible_ratio = 0.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Character" type="Sprite2D" parent="."]
+position = Vector2(114, 75)
+scale = Vector2(7, 7)
+texture = ExtResource("2_dcyqk")
+flip_h = true

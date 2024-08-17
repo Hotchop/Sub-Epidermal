@@ -1,11 +1,104 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtiikx4w6vkwn"]
+[gd_scene load_steps=22 format=3 uid="uid://dtiikx4w6vkwn"]
 
 [ext_resource type="PackedScene" uid="uid://d18b8gy8y6nfl" path="res://maps/heart_map.tscn" id="1_n6bvx"]
 [ext_resource type="PackedScene" uid="uid://bacxitw523mgg" path="res://entities/player.tscn" id="1_ol24k"]
+[ext_resource type="PackedScene" uid="uid://d07e7av40yjvt" path="res://entities/stone.tscn" id="3_h1jfv"]
+[ext_resource type="Texture2D" uid="uid://d1e56aeigpka1" path="res://assets/ui/UI Pack.png" id="3_p6vud"]
+[ext_resource type="PackedScene" uid="uid://dt5gcj2pa2cpc" path="res://global/dialog_popup.tscn" id="5_ptxo0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p372y"]
+atlas = ExtResource("3_p6vud")
+region = Rect2(873, 133, 32, 5)
+margin = Rect2(2.815, 2.015, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ni82"]
+atlas = ExtResource("3_p6vud")
+region = Rect2(582, 131, 38, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jehqw"]
+atlas = ExtResource("3_p6vud")
+region = Rect2(633, 133, 32, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np327"]
+atlas = ExtResource("3_p6vud")
+region = Rect2(873, 149, 32, 5)
+margin = Rect2(3, 2, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dr5eq"]
+atlas = ExtResource("3_p6vud")
+region = Rect2(582, 147, 38, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyl4r"]
+atlas = ExtResource("3_p6vud")
+region = Rect2(633, 149, 32, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6gxy"]
+atlas = ExtResource("3_p6vud")
+region = Rect2(1072, 0, 32, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swf13"]
+atlas = ExtResource("3_p6vud")
+region = Rect2(1040, 0, 32, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdv2f"]
+atlas = ExtResource("3_p6vud")
+region = Rect2(1008, 0, 32, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykagy"]
+atlas = ExtResource("3_p6vud")
+region = Rect2(976, 0, 32, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xenqo"]
+atlas = ExtResource("3_p6vud")
+region = Rect2(944, 0, 32, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arc0x"]
+atlas = ExtResource("3_p6vud")
+region = Rect2(912, 0, 32, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b1ah6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6gxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swf13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdv2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykagy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xenqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arc0x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64bc2"]
+atlas = ExtResource("3_p6vud")
+region = Rect2(871, 118, 34, 5)
+margin = Rect2(4, 3, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7gkj"]
+atlas = ExtResource("3_p6vud")
+region = Rect2(579, 83, 42, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfix6"]
+atlas = ExtResource("3_p6vud")
+region = Rect2(631, 118, 34, 5)
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Backdrops" type="Node2D" parent="."]
+position = Vector2(992, 537)
 
 [node name="Background" type="ColorRect" parent="Backdrops"]
 offset_left = -16005.0
@@ -39,7 +132,144 @@ scale = Vector2(2.87416, 115.873)
 color = Color(0.854902, 0.160784, 0.160784, 1)
 
 [node name="Heart Map" parent="." instance=ExtResource("1_n6bvx")]
+position = Vector2(992, 537)
 
 [node name="Player" parent="." instance=ExtResource("1_ol24k")]
-position = Vector2(0, -4)
+position = Vector2(992, 533)
 scale = Vector2(2, 2)
+
+[node name="Objects" type="Node" parent="."]
+
+[node name="Stone" parent="Objects" instance=ExtResource("3_h1jfv")]
+position = Vector2(-117, 917)
+rotation = 0.616177
+scale = Vector2(4.2641, 4.2641)
+
+[node name="Stone2" parent="Objects" instance=ExtResource("3_h1jfv")]
+position = Vector2(741, 1673)
+rotation = -0.441536
+scale = Vector2(2.77331, 2.77331)
+
+[node name="Stone3" parent="Objects" instance=ExtResource("3_h1jfv")]
+position = Vector2(-294, -191)
+rotation = -2.16177
+scale = Vector2(2.3308, 2.3308)
+
+[node name="Stone4" parent="Objects" instance=ExtResource("3_h1jfv")]
+position = Vector2(666, -964)
+rotation = -0.545052
+scale = Vector2(2.48112, 2.48112)
+
+[node name="Stone5" parent="Objects" instance=ExtResource("3_h1jfv")]
+position = Vector2(867, -465)
+rotation = 0.0981925
+scale = Vector2(4, 4)
+
+[node name="Stone6" parent="Objects" instance=ExtResource("3_h1jfv")]
+position = Vector2(2697, 1453)
+rotation = 1.46547
+scale = Vector2(4.05549, 4.05549)
+
+[node name="Stone7" parent="Objects" instance=ExtResource("3_h1jfv")]
+position = Vector2(2053, 1400)
+rotation = -0.385992
+scale = Vector2(5.65318, 5.65318)
+
+[node name="Stone8" parent="Objects" instance=ExtResource("3_h1jfv")]
+position = Vector2(2314, -220)
+rotation = 0.258105
+scale = Vector2(6.82099, 6.82099)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Progress Bars" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HP" type="TextureProgressBar" parent="CanvasLayer/Progress Bars"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 18.0
+offset_right = 62.0
+offset_bottom = 29.0
+scale = Vector2(5, 5)
+value = 100.0
+texture_under = SubResource("AtlasTexture_p372y")
+texture_over = SubResource("AtlasTexture_1ni82")
+texture_progress = SubResource("AtlasTexture_jehqw")
+texture_progress_offset = Vector2(3.015, 2)
+
+[node name="Label" type="Label" parent="CanvasLayer/Progress Bars/HP"]
+layout_mode = 0
+offset_left = 38.0
+offset_right = 106.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "HULL"
+horizontal_alignment = 1
+
+[node name="Oxigen" type="TextureProgressBar" parent="CanvasLayer/Progress Bars"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 93.0
+offset_right = 62.0
+offset_bottom = 104.0
+scale = Vector2(5, 5)
+max_value = 600.0
+value = 600.0
+texture_under = SubResource("AtlasTexture_np327")
+texture_over = SubResource("AtlasTexture_dr5eq")
+texture_progress = SubResource("AtlasTexture_eyl4r")
+texture_progress_offset = Vector2(3, 2)
+
+[node name="Label" type="Label" parent="CanvasLayer/Progress Bars/Oxigen"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = -0.600002
+offset_right = 105.0
+offset_bottom = 22.4
+scale = Vector2(0.5, 0.5)
+text = "OXIGEN"
+horizontal_alignment = 1
+
+[node name="WB Cell Counter" type="AnimatedSprite2D" parent="CanvasLayer/Progress Bars"]
+position = Vector2(117, 191)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_b1ah6")
+
+[node name="Infection" type="TextureProgressBar" parent="CanvasLayer/Progress Bars"]
+layout_mode = 0
+offset_left = 1695.0
+offset_top = 18.0
+offset_right = 1735.0
+offset_bottom = 29.0
+scale = Vector2(5, 5)
+value = 100.0
+fill_mode = 1
+texture_under = SubResource("AtlasTexture_64bc2")
+texture_over = SubResource("AtlasTexture_b7gkj")
+texture_progress = SubResource("AtlasTexture_qfix6")
+texture_progress_offset = Vector2(4, 3)
+
+[node name="Label" type="Label" parent="CanvasLayer/Progress Bars/Infection"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -107.0
+offset_top = -0.4
+offset_right = 27.0
+offset_bottom = 22.6
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+text = "INFECTION LEVEL"
+
+[node name="Dialog Popup" parent="CanvasLayer" instance=ExtResource("5_ptxo0")]
+visible = false
+offset_left = 328.0
+offset_top = 733.0
+offset_right = -885.0
+offset_bottom = -115.0
+scale = Vector2(1.68, 1.68)
