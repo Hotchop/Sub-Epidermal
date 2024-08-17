@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c70154gk5jebi"]
+[gd_scene load_steps=7 format=3 uid="uid://c70154gk5jebi"]
 
 [ext_resource type="Texture2D" uid="uid://1ph816ftmrum" path="res://assets/sprites/rocks.png" id="1_u22xg"]
+[ext_resource type="Script" path="res://entities/big_stone.gd" id="1_ur68w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h3fqe"]
 atlas = ExtResource("1_u22xg")
@@ -22,6 +23,7 @@ polygon = PackedVector2Array(9.5, -20.5, 5.5, -20, 5.5, -19, 0.5, -19, 0.5, -18,
 radius = 43.1856
 
 [node name="Big Stone" type="StaticBody2D"]
+script = ExtResource("1_ur68w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_h3fqe")
@@ -45,3 +47,5 @@ occluder = SubResource("OccluderPolygon2D_tkoun")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_b7nny")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

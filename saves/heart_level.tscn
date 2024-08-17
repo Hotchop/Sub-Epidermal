@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dtiikx4w6vkwn"]
+[gd_scene load_steps=27 format=3 uid="uid://dtiikx4w6vkwn"]
 
 [ext_resource type="Script" path="res://saves/heart_level.gd" id="1_2io76"]
 [ext_resource type="PackedScene" uid="uid://d18b8gy8y6nfl" path="res://maps/heart_map.tscn" id="1_n6bvx"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b8a1yhkf5rqso" path="res://entities/white_cell.tscn" id="5_0fmnp"]
 [ext_resource type="PackedScene" uid="uid://dt5gcj2pa2cpc" path="res://global/dialog_popup.tscn" id="5_ptxo0"]
 [ext_resource type="PackedScene" uid="uid://cc2l1ks8shknq" path="res://entities/blood_cell.tscn" id="6_icmee"]
+[ext_resource type="PackedScene" uid="uid://6bmcaphepj8x" path="res://entities/charger.tscn" id="7_ifs15"]
 [ext_resource type="PackedScene" uid="uid://c70154gk5jebi" path="res://entities/big_stone.tscn" id="9_d13a4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p372y"]
@@ -220,6 +221,45 @@ position = Vector2(-112, -638)
 scale = Vector2(0.2, 0.2)
 
 [node name="Enemies" type="Node" parent="."]
+
+[node name="Charger" parent="Enemies" instance=ExtResource("7_ifs15")]
+position = Vector2(-712, 948)
+
+[node name="Charger2" parent="Enemies" instance=ExtResource("7_ifs15")]
+position = Vector2(-457, 1322)
+
+[node name="Charger3" parent="Enemies" instance=ExtResource("7_ifs15")]
+position = Vector2(-510, -902)
+
+[node name="Charger4" parent="Enemies" instance=ExtResource("7_ifs15")]
+position = Vector2(2133, -1019)
+
+[node name="Charger5" parent="Enemies" instance=ExtResource("7_ifs15")]
+position = Vector2(1952, 721)
+
+[node name="Charger6" parent="Enemies" instance=ExtResource("7_ifs15")]
+position = Vector2(409, 2202)
+
+[node name="Charger7" parent="Enemies" instance=ExtResource("7_ifs15")]
+position = Vector2(2250, 2240)
+
+[node name="Charger8" parent="Enemies" instance=ExtResource("7_ifs15")]
+position = Vector2(2716, 2131)
+
+[node name="Charger9" parent="Enemies" instance=ExtResource("7_ifs15")]
+position = Vector2(580, 1280)
+
+[node name="Charger10" parent="Enemies" instance=ExtResource("7_ifs15")]
+position = Vector2(1018, -1299)
+
+[node name="Charger11" parent="Enemies" instance=ExtResource("7_ifs15")]
+position = Vector2(-891, 321)
+
+[node name="Charger12" parent="Enemies" instance=ExtResource("7_ifs15")]
+position = Vector2(2808, 371)
+
+[node name="Charger13" parent="Enemies" instance=ExtResource("7_ifs15")]
+position = Vector2(2819, -1097)
 
 [node name="Player" parent="." instance=ExtResource("1_ol24k")]
 top_level = true

@@ -84,8 +84,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1uh75"]
-radius = 8.0
-height = 34.0
+radius = 7.03125
+height = 33.5937
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3, 3)
@@ -113,8 +113,9 @@ autoplay = "default"
 frame_progress = 0.222077
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5.33333)
+position = Vector2(-1.66667, 6.33333)
 rotation = 1.5708
+scale = Vector2(0.853334, 0.853334)
 shape = SubResource("CapsuleShape2D_1uh75")
 
 [node name="Camera2D" type="Camera2D" parent="."]

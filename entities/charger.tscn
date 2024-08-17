@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://6bmcaphepj8x"]
+
+[ext_resource type="Texture2D" uid="uid://lk34dhdn5ojo" path="res://assets/sprites/movingEnemy/enemy4.png" id="1_03lbd"]
+[ext_resource type="Script" path="res://entities/charger.gd" id="1_g1c1w"]
+[ext_resource type="Texture2D" uid="uid://w7vb03yx7f1p" path="res://assets/sprites/movingEnemy/enemy3.png" id="2_tx7yq"]
+[ext_resource type="Texture2D" uid="uid://bprjoi62mbbap" path="res://assets/sprites/movingEnemy/enemy1.png" id="3_kx7xq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_122ra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_03lbd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tx7yq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kx7xq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l7xcd"]
+radius = 16.8235
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nmqcg"]
+radius = 12.6809
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_71585"]
+radius = 140.089
+
+[node name="Charger" type="CharacterBody2D"]
+scale = Vector2(0.2, 0.2)
+motion_mode = 1
+script = ExtResource("1_g1c1w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_122ra")
+autoplay = "default"
+frame_progress = 0.0478552
+
+[node name="Detection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+scale = Vector2(80.25, 80.25)
+shape = SubResource("CircleShape2D_l7xcd")
+
+[node name="Body" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+scale = Vector2(14.2, 14.2)
+shape = SubResource("CircleShape2D_nmqcg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_71585")
+
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="Detection" to="." method="_on_detection_body_exited"]
+[connection signal="area_entered" from="Body" to="." method="_on_body_area_entered"]
+[connection signal="body_entered" from="Body" to="." method="_on_body_body_entered"]
