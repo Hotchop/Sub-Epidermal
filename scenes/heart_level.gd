@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func _on_timer_timeout() -> void:
 	$"CanvasLayer/Progress Bars/Oxigen".value -= 1
-	if $"CanvasLayer/Progress Bars/Oxigen".value <= 0:
+	if $"CanvasLayer/Progress Bars/Oxigen".value == 0:
 		player_died()
 
 func _on_infection_lowered():
@@ -27,8 +27,9 @@ func _on_hp_change():
 
 #Progression
 func player_died():
-	$Player.queue_free()
+	$Player.explode()
 	await get_tree().create_timer(2).timeout
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 #Blood Cells
 func _on_blood_cell_health_full(message: String) -> void:
@@ -74,10 +75,17 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == 'Player':
 		if Game.white_blood_cells < 5 and Game.infection_level > 0:
 			$"CanvasLayer/Dialog Popup".popup('This obstruction is too dense. I should find some help to clear it up.')
-		elif Game.white_blood_cells == 5 and Game.infection_level <= 0:
+		elif Game.white_blood_cells == 5 and Game.infection_level > 0:
 			$"CanvasLayer/Dialog Popup".popup('I should get rid of the infection before moving forward.')
 		elif Game.white_blood_cells < 5 and Game.white_blood_cells > 0 and Game.infection_level <= 0:
 			$"CanvasLayer/Dialog Popup".popup("I'm gonna need more white cells if I want to clear the way.")
-		else:
-			#End Level
-			pass
+		elif Game.white_blood_cells == 5 and Game.infection_level <= 0:
+			end_level()
+
+func end_level():
+	get_tree().change_scene_to_file("res://scenes/heart_end.tscn")
+
+
+func _on_tutorial_timeout() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property($Tutorial,"modulate",Color(1, 1, 1, 0),0.5)

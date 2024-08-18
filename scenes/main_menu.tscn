@@ -1,0 +1,207 @@
+[gd_scene load_steps=15 format=3 uid="uid://dr4kbeu6kj538"]
+
+[ext_resource type="Texture2D" uid="uid://dubr72qxfc7xh" path="res://assets/sprites/blood_cell.png" id="1_ogjf1"]
+[ext_resource type="PackedScene" uid="uid://bacxitw523mgg" path="res://entities/player.tscn" id="1_xn652"]
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_yqe5n"]
+[ext_resource type="Texture2D" uid="uid://cp15uvcv3xpjn" path="res://assets/GMTK assets/gmtk2024-logo.png" id="2_3q82l"]
+[ext_resource type="Texture2D" uid="uid://cyx6a3jow3ny5" path="res://assets/fx/bubble.png" id="3_5tdj8"]
+[ext_resource type="LabelSettings" uid="uid://cki0inscy3gsp" path="res://assets/fonts/Title.tres" id="6_idlau"]
+[ext_resource type="FontFile" uid="uid://cqwhbcwuhylf0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="7_h3r4e"]
+[ext_resource type="LabelSettings" uid="uid://bxq8exieglrod" path="res://assets/fonts/Bars.tres" id="9_vx3g3"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ankp3"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1000, 1, 1)
+gravity = Vector3(0, -500, 0)
+turbulence_enabled = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpjag"]
+atlas = ExtResource("1_ogjf1")
+region = Rect2(2, 3, 194, 94)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_u7yd6"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_teusu"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(5, 1, 1)
+gravity = Vector3(0, -98, 0)
+scale_min = 2.0
+scale_max = 3.0
+turbulence_enabled = true
+collision_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_xxjt8"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.412338, 0.691558)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1sr40"]
+gradient = SubResource("Gradient_xxjt8")
+width = 250
+height = 150
+fill = 1
+fill_from = Vector2(0.478632, 0.482906)
+fill_to = Vector2(0, 0)
+
+[node name="Main Menu" type="Node2D"]
+script = ExtResource("1_yqe5n")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+offset_left = -59.0
+offset_top = -72.0
+offset_right = -19.0
+offset_bottom = -32.0
+scale = Vector2(51.4125, 30.4016)
+color = Color(0.25098, 0.027451, 0.027451, 1)
+
+[node name="Cells" type="GPUParticles2D" parent="."]
+position = Vector2(925, 1079)
+process_material = SubResource("ParticleProcessMaterial_ankp3")
+texture = SubResource("AtlasTexture_wpjag")
+lifetime = 5.0
+speed_scale = 2.0
+randomness = 1.0
+
+[node name="Bubbles" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_u7yd6")
+position = Vector2(1477, 380)
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_teusu")
+texture = ExtResource("3_5tdj8")
+lifetime = 5.0
+speed_scale = 3.0
+
+[node name="Player" parent="." instance=ExtResource("1_xn652")]
+position = Vector2(1461, 405)
+rotation = -0.0715585
+scale = Vector2(20, 20)
+canMove = false
+canShoot = false
+
+[node name="GPUParticles2D" parent="Player" index="0"]
+emitting = false
+lifetime = 4.0
+speed_scale = 2.0
+
+[node name="Camera2D" parent="Player" index="4"]
+visible = false
+enabled = false
+
+[node name="Gmtk2024-logo" type="Sprite2D" parent="."]
+position = Vector2(1625, 918)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_3q82l")
+
+[node name="Title" type="Label" parent="."]
+offset_left = 182.0
+offset_top = 60.0
+offset_right = 401.0
+offset_bottom = 168.0
+scale = Vector2(4, 4)
+text = "SUB
+EPIDERMAL"
+label_settings = ExtResource("6_idlau")
+horizontal_alignment = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="Title"]
+position = Vector2(109, 58.75)
+texture = SubResource("GradientTexture2D_1sr40")
+
+[node name="Menu" type="VBoxContainer" parent="."]
+offset_left = 182.0
+offset_top = 488.0
+offset_right = 401.0
+offset_bottom = 629.0
+scale = Vector2(4, 4)
+
+[node name="CenterContainer1" type="CenterContainer" parent="Menu"]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="Menu/CenterContainer1"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_h3r4e")
+theme_override_font_sizes/font_size = 20
+text = "Start"
+
+[node name="CenterContainer2" type="CenterContainer" parent="Menu"]
+layout_mode = 2
+
+[node name="Settings" type="Button" parent="Menu/CenterContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_h3r4e")
+theme_override_font_sizes/font_size = 20
+text = "Settings"
+
+[node name="CenterContainer3" type="CenterContainer" parent="Menu"]
+layout_mode = 2
+
+[node name="Credits" type="Button" parent="Menu/CenterContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_h3r4e")
+theme_override_font_sizes/font_size = 20
+text = "Credits"
+
+[node name="CenterContainer4" type="CenterContainer" parent="Menu"]
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="Menu/CenterContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_h3r4e")
+theme_override_font_sizes/font_size = 20
+text = "Exit"
+
+[node name="Settings" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 325.0
+offset_top = 485.0
+offset_right = 474.0
+offset_bottom = 631.0
+scale = Vector2(4, 4)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings"]
+layout_mode = 0
+offset_right = 106.0
+offset_bottom = 102.0
+
+[node name="Music" type="Label" parent="Settings/VBoxContainer"]
+layout_mode = 2
+text = "Music"
+label_settings = ExtResource("9_vx3g3")
+horizontal_alignment = 1
+
+[node name="Music Slider" type="HSlider" parent="Settings/VBoxContainer"]
+modulate = Color(1, 1, 0, 1)
+layout_mode = 2
+value = 100.0
+
+[node name="Sound Effects" type="Label" parent="Settings/VBoxContainer"]
+layout_mode = 2
+text = "Sound Effects"
+label_settings = ExtResource("9_vx3g3")
+
+[node name="Effects Slider" type="HSlider" parent="Settings/VBoxContainer"]
+modulate = Color(1, 1, 0, 1)
+layout_mode = 2
+value = 100.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Settings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="Settings/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_h3r4e")
+text = "BACK"
+
+[connection signal="pressed" from="Menu/CenterContainer1/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Menu/CenterContainer2/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Menu/CenterContainer3/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Menu/CenterContainer4/Exit" to="." method="_on_exit_pressed"]
+[connection signal="value_changed" from="Settings/VBoxContainer/Music Slider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Settings/VBoxContainer/Effects Slider" to="." method="_on_effects_slider_value_changed"]
+[connection signal="pressed" from="Settings/VBoxContainer/CenterContainer/Back" to="." method="_on_back_pressed"]
+
+[editable path="Player"]

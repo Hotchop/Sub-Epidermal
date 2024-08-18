@@ -1,0 +1,134 @@
+[gd_scene load_steps=17 format=3 uid="uid://4n2ppvs6ckaw"]
+
+[ext_resource type="Texture2D" uid="uid://cxomdcyamxvh" path="res://assets/fx/Yellow Effect Bullet Impact Explosion 32x32.png" id="1_u77nj"]
+[ext_resource type="Texture2D" uid="uid://c1b0kab7nbhfe" path="res://assets/fx/Green Effect Bullet Impact Explosion 32x32.png" id="2_niiit"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdehy"]
+atlas = ExtResource("1_u77nj")
+region = Rect2(352, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo4qo"]
+atlas = ExtResource("1_u77nj")
+region = Rect2(384, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_moq2c"]
+atlas = ExtResource("1_u77nj")
+region = Rect2(416, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mf2f"]
+atlas = ExtResource("1_u77nj")
+region = Rect2(448, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inx2w"]
+atlas = ExtResource("1_u77nj")
+region = Rect2(512, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6n2f"]
+atlas = ExtResource("1_u77nj")
+region = Rect2(544, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbvys"]
+atlas = ExtResource("1_u77nj")
+region = Rect2(576, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06joi"]
+atlas = ExtResource("1_u77nj")
+region = Rect2(608, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfikr"]
+atlas = ExtResource("2_niiit")
+region = Rect2(352, 448, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k30yb"]
+atlas = ExtResource("2_niiit")
+region = Rect2(384, 448, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3nxm"]
+atlas = ExtResource("2_niiit")
+region = Rect2(416, 448, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mg2ac"]
+atlas = ExtResource("2_niiit")
+region = Rect2(448, 448, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4bwrw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdehy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oo4qo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moq2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mf2f")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inx2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6n2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbvys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06joi")
+}],
+"loop": false,
+"name": &"subExplosion",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfikr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k30yb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3nxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mg2ac")
+}],
+"loop": false,
+"name": &"virusExplosion",
+"speed": 8.0
+}]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nn000"]
+particle_flag_disable_z = true
+initial_velocity_max = 23.53
+gravity = Vector3(0, -200, 0)
+tangential_accel_min = 57.65
+tangential_accel_max = 100.0
+damping_min = 38.235
+damping_max = 73.823
+scale_min = 4.0
+scale_max = 4.0
+color = Color(0.972549, 0.913725, 0.490196, 1)
+turbulence_noise_speed_random = 2.69
+
+[node name="fireFX" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_4bwrw")
+animation = &"virusExplosion"
+
+[node name="firesparks" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_nn000")

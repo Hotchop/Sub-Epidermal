@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://bacxitw523mgg"]
+[gd_scene load_steps=18 format=3 uid="uid://bacxitw523mgg"]
 
 [ext_resource type="Script" path="res://entities/player.gd" id="2_3qnp6"]
 [ext_resource type="Texture2D" uid="uid://cyx6a3jow3ny5" path="res://assets/fx/bubble.png" id="2_pimwa"]
 [ext_resource type="Texture2D" uid="uid://c4g4ivnt7jskx" path="res://assets/sprites/submarine_sheet.png" id="3_s5j6u"]
+[ext_resource type="PackedScene" uid="uid://4n2ppvs6ckaw" path="res://global/fireFX.tscn" id="4_in57w"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_u7yd6"]
 
@@ -120,3 +121,9 @@ shape = SubResource("CapsuleShape2D_1uh75")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="fireFX" parent="." instance=ExtResource("4_in57w")]
+position = Vector2(0, 6.33333)
+animation = &"subExplosion"
+
+[connection signal="animation_finished" from="fireFX" to="." method="_on_fire_fx_animation_finished"]

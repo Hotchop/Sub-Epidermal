@@ -1,0 +1,108 @@
+[gd_scene load_steps=11 format=3 uid="uid://bt7ayrp5s44g1"]
+
+[ext_resource type="Texture2D" uid="uid://cyx6a3jow3ny5" path="res://assets/fx/bubble.png" id="1_0nvqg"]
+[ext_resource type="Script" path="res://scenes/game_over.gd" id="1_xtjwk"]
+[ext_resource type="PackedScene" uid="uid://bacxitw523mgg" path="res://entities/player.tscn" id="2_dn7mk"]
+[ext_resource type="Texture2D" uid="uid://1ph816ftmrum" path="res://assets/sprites/rocks.png" id="3_uw5fu"]
+[ext_resource type="FontFile" uid="uid://c68ejhvbwea2s" path="res://assets/fonts/Bungee_Tint/BungeeTint-Regular.ttf" id="5_nu5ej"]
+[ext_resource type="FontFile" uid="uid://cqwhbcwuhylf0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="6_htnmu"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_u7yd6"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_teusu"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(5, 1, 1)
+gravity = Vector3(0, -98, 0)
+scale_max = 2.0
+turbulence_enabled = true
+collision_mode = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_id67p"]
+atlas = ExtResource("3_uw5fu")
+region = Rect2(9, 300, 76, 40)
+
+[sub_resource type="LabelSettings" id="LabelSettings_q0ktx"]
+font = ExtResource("5_nu5ej")
+font_size = 28
+
+[node name="Game Over" type="Node2D"]
+script = ExtResource("1_xtjwk")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+offset_left = -41.0
+offset_top = -34.0
+offset_right = -1.0
+offset_bottom = 6.0
+scale = Vector2(50.8677, 29.1598)
+color = Color(0, 0, 0, 1)
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_u7yd6")
+position = Vector2(923.805, 745.634)
+rotation = -2.47794
+scale = Vector2(12.7527, 12.7527)
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_teusu")
+texture = ExtResource("1_0nvqg")
+lifetime = 3.0
+speed_scale = 2.0
+
+[node name="Player" parent="." instance=ExtResource("2_dn7mk")]
+position = Vector2(861.805, 871.634)
+rotation = -2.47794
+scale = Vector2(12.7527, 12.7527)
+canMove = false
+canShoot = false
+
+[node name="GPUParticles2D" parent="Player" index="0"]
+emitting = false
+
+[node name="Camera2D" parent="Player" index="4"]
+enabled = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(947.805, 881.634)
+scale = Vector2(8.2317, 8.2317)
+texture = SubResource("AtlasTexture_id67p")
+flip_h = true
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_top = 35.0
+offset_right = 384.0
+offset_bottom = 155.0
+scale = Vector2(5, 5)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+text = "MISSION FAILED"
+label_settings = SubResource("LabelSettings_q0ktx")
+
+[node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Return" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_htnmu")
+theme_override_font_sizes/font_size = 20
+text = "RETRY"
+
+[node name="CenterContainer3" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_htnmu")
+theme_override_font_sizes/font_size = 20
+text = "EXIT"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer3/Exit" to="." method="_on_exit_pressed"]
+
+[editable path="Player"]

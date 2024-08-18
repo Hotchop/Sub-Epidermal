@@ -1,0 +1,950 @@
+[gd_scene load_steps=55 format=3 uid="uid://btfpaxq6b5j37"]
+
+[ext_resource type="Texture2D" uid="uid://cyx6a3jow3ny5" path="res://assets/fx/bubble.png" id="1_1p776"]
+[ext_resource type="Texture2D" uid="uid://cc20vs7dgi6b7" path="res://assets/sprites/Volcano Drake Boss.png" id="1_8ukbh"]
+[ext_resource type="Script" path="res://scenes/ending.gd" id="1_14jki"]
+[ext_resource type="Texture2D" uid="uid://tu61d4tsgpl5" path="res://assets/background/CityBuilder.png" id="2_5b1ts"]
+[ext_resource type="Script" path="res://entities/player.gd" id="2_le5n6"]
+[ext_resource type="Texture2D" uid="uid://c4g4ivnt7jskx" path="res://assets/sprites/submarine_sheet.png" id="3_gmso4"]
+[ext_resource type="Script" path="res://global/dialog_popup.gd" id="6_hpcw0"]
+[ext_resource type="Texture2D" uid="uid://cxomdcyamxvh" path="res://assets/fx/Yellow Effect Bullet Impact Explosion 32x32.png" id="6_nketx"]
+[ext_resource type="LabelSettings" uid="uid://cki0inscy3gsp" path="res://assets/fonts/Title.tres" id="7_cio5i"]
+[ext_resource type="Texture2D" uid="uid://c1b0kab7nbhfe" path="res://assets/fx/Green Effect Bullet Impact Explosion 32x32.png" id="7_l2hs1"]
+[ext_resource type="Texture2D" uid="uid://bydde0dkqphc7" path="res://assets/ui/Text Banner.png" id="7_nt8x3"]
+[ext_resource type="Texture2D" uid="uid://dhvyd34ygbf8p" path="res://assets/sprites/submarine.png" id="8_xf0xn"]
+[ext_resource type="FontFile" uid="uid://cqwhbcwuhylf0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="9_k43on"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_u7yd6"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_teusu"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(5, 1, 1)
+gravity = Vector3(0, -98, 0)
+scale_min = 2.0
+scale_max = 3.0
+turbulence_enabled = true
+collision_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_bkj0i"]
+offsets = PackedFloat32Array(0.409091, 0.701299)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oa7e1"]
+gradient = SubResource("Gradient_bkj0i")
+fill = 1
+fill_from = Vector2(0.509174, 0.495413)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6x1l"]
+atlas = ExtResource("3_gmso4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ocyg"]
+atlas = ExtResource("3_gmso4")
+region = Rect2(33, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mt4x8"]
+atlas = ExtResource("3_gmso4")
+region = Rect2(66, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vv7a"]
+atlas = ExtResource("3_gmso4")
+region = Rect2(99, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t41cl"]
+atlas = ExtResource("3_gmso4")
+region = Rect2(132, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwiq8"]
+atlas = ExtResource("3_gmso4")
+region = Rect2(165, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lug12"]
+atlas = ExtResource("3_gmso4")
+region = Rect2(198, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pil8e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6x1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ocyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mt4x8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vv7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t41cl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwiq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lug12")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1uh75"]
+radius = 7.03125
+height = 33.5937
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tckb7"]
+atlas = ExtResource("1_8ukbh")
+region = Rect2(0, 0, 84, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbn2o"]
+atlas = ExtResource("1_8ukbh")
+region = Rect2(84, 0, 84, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfiya"]
+atlas = ExtResource("1_8ukbh")
+region = Rect2(168, 0, 84, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7hon"]
+atlas = ExtResource("1_8ukbh")
+region = Rect2(252, 0, 84, 84)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_32fe6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tckb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbn2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfiya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7hon")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdehy"]
+atlas = ExtResource("6_nketx")
+region = Rect2(352, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo4qo"]
+atlas = ExtResource("6_nketx")
+region = Rect2(384, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_moq2c"]
+atlas = ExtResource("6_nketx")
+region = Rect2(416, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mf2f"]
+atlas = ExtResource("6_nketx")
+region = Rect2(448, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inx2w"]
+atlas = ExtResource("6_nketx")
+region = Rect2(512, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6n2f"]
+atlas = ExtResource("6_nketx")
+region = Rect2(544, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbvys"]
+atlas = ExtResource("6_nketx")
+region = Rect2(576, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06joi"]
+atlas = ExtResource("6_nketx")
+region = Rect2(608, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfikr"]
+atlas = ExtResource("7_l2hs1")
+region = Rect2(352, 448, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k30yb"]
+atlas = ExtResource("7_l2hs1")
+region = Rect2(384, 448, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3nxm"]
+atlas = ExtResource("7_l2hs1")
+region = Rect2(416, 448, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mg2ac"]
+atlas = ExtResource("7_l2hs1")
+region = Rect2(448, 448, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4bwrw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdehy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oo4qo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moq2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mf2f")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inx2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6n2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbvys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06joi")
+}],
+"loop": false,
+"name": &"subExplosion",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfikr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k30yb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3nxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mg2ac")
+}],
+"loop": false,
+"name": &"virusExplosion",
+"speed": 8.0
+}]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nn000"]
+particle_flag_disable_z = true
+initial_velocity_max = 23.53
+gravity = Vector3(0, -200, 0)
+tangential_accel_min = 57.65
+tangential_accel_max = 100.0
+damping_min = 38.235
+damping_max = 73.823
+scale_min = 4.0
+scale_max = 4.0
+color = Color(0.972549, 0.913725, 0.490196, 1)
+turbulence_noise_speed_random = 2.69
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2isvp"]
+atlas = ExtResource("2_5b1ts")
+region = Rect2(32, 278, 192, 74)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vhkh3"]
+font = ExtResource("9_k43on")
+font_size = 20
+
+[sub_resource type="Animation" id="Animation_klbpw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Banner:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Banner/RichTextLabel:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_fw25t"]
+resource_name = "popup"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Banner:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Banner/RichTextLabel:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.266667, 2.26667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rk83o"]
+_data = {
+"RESET": SubResource("Animation_klbpw"),
+"popup": SubResource("Animation_fw25t")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i2p8"]
+atlas = ExtResource("1_8ukbh")
+region = Rect2(13, 9, 57, 75)
+
+[sub_resource type="Animation" id="Animation_h18up"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Dialog Sub:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Dialog Sub/Banner/RichTextLabel:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sub Scene:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Monster Scene:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera2D:enabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Camera2D:zoom")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5, 5)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Camera2D:offset")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(600, 540)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/Dialog Monster:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CanvasLayer/Dialog Monster/Banner/RichTextLabel:visible_ratio")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Monster Scene/VBoxContainer:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2017, 106)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("ColorRect:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_omqgl"]
+resource_name = "ending"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.03333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Dialog Sub:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 7.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Dialog Sub/Banner/RichTextLabel:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sub Scene:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Monster Scene:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera2D:enabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 7.5, 8.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Camera2D:zoom")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(7.5, 8.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Camera2D:offset")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(7.5, 8.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(600, 540), Vector2(960, 540)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/Dialog Monster:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 9, 15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CanvasLayer/Dialog Monster/Banner/RichTextLabel:visible_ratio")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 9.5, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Monster Scene/VBoxContainer:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 15, 16),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2017, 106), Vector2(2017, 106), Vector2(1055, 106)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("ColorRect:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bwi8u"]
+_data = {
+"RESET": SubResource("Animation_h18up"),
+"ending": SubResource("Animation_omqgl")
+}
+
+[node name="Ending" type="Node2D"]
+script = ExtResource("1_14jki")
+
+[node name="Sub Scene" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Sub Scene"]
+offset_left = -43.0
+offset_top = -43.0
+offset_right = -3.0
+offset_bottom = -3.0
+scale = Vector2(50.5621, 29.0052)
+color = Color(0.25098, 0.027451, 0.027451, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sub Scene"]
+material = SubResource("CanvasItemMaterial_u7yd6")
+position = Vector2(945, 444)
+scale = Vector2(20, 20)
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_teusu")
+texture = ExtResource("1_1p776")
+lifetime = 4.0
+speed_scale = 2.0
+
+[node name="Player" type="CharacterBody2D" parent="Sub Scene"]
+position = Vector2(945, 444)
+scale = Vector2(20, 20)
+motion_mode = 1
+script = ExtResource("2_le5n6")
+canMove = false
+canShoot = false
+
+[node name="PointLight2D" type="PointLight2D" parent="Sub Scene/Player"]
+position = Vector2(0, 5.33333)
+energy = 0.8
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_oa7e1")
+texture_scale = 1.5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sub Scene/Player"]
+sprite_frames = SubResource("SpriteFrames_pil8e")
+autoplay = "default"
+frame_progress = 0.222077
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sub Scene/Player"]
+position = Vector2(-1.66667, 6.33333)
+rotation = 1.5708
+scale = Vector2(0.853334, 0.853334)
+shape = SubResource("CapsuleShape2D_1uh75")
+
+[node name="Camera2D" type="Camera2D" parent="Sub Scene/Player"]
+enabled = false
+zoom = Vector2(5, 5)
+
+[node name="Monster Scene" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Monster Scene"]
+anchors_preset = -1
+anchor_left = -0.014
+anchor_right = -0.014
+offset_left = -11.12
+offset_top = -28.0
+offset_right = 1976.88
+offset_bottom = 1121.0
+color = Color(0.560784, 1, 1, 1)
+
+[node name="Monster" type="AnimatedSprite2D" parent="Monster Scene"]
+position = Vector2(694, 550)
+scale = Vector2(12, 12)
+sprite_frames = SubResource("SpriteFrames_32fe6")
+autoplay = "default"
+frame_progress = 0.828156
+flip_h = true
+
+[node name="Fires" type="Node2D" parent="Monster Scene"]
+
+[node name="fireFX" type="AnimatedSprite2D" parent="Monster Scene/Fires"]
+position = Vector2(104, 468)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_4bwrw")
+animation = &"fire"
+autoplay = "fire"
+frame_progress = 0.591495
+
+[node name="firesparks" type="GPUParticles2D" parent="Monster Scene/Fires/fireFX"]
+show_behind_parent = true
+position = Vector2(2.5, -5)
+process_material = SubResource("ParticleProcessMaterial_nn000")
+
+[node name="fireFX2" type="AnimatedSprite2D" parent="Monster Scene/Fires"]
+position = Vector2(409, 830)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_4bwrw")
+animation = &"fire"
+autoplay = "fire"
+frame_progress = 0.591495
+
+[node name="firesparks" type="GPUParticles2D" parent="Monster Scene/Fires/fireFX2"]
+show_behind_parent = true
+position = Vector2(2.5, -5)
+process_material = SubResource("ParticleProcessMaterial_nn000")
+
+[node name="fireFX3" type="AnimatedSprite2D" parent="Monster Scene/Fires"]
+position = Vector2(731, 690)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_4bwrw")
+animation = &"fire"
+autoplay = "fire"
+frame_progress = 0.591495
+
+[node name="firesparks" type="GPUParticles2D" parent="Monster Scene/Fires/fireFX3"]
+show_behind_parent = true
+position = Vector2(2.5, -5)
+process_material = SubResource("ParticleProcessMaterial_nn000")
+
+[node name="fireFX4" type="AnimatedSprite2D" parent="Monster Scene/Fires"]
+position = Vector2(1087, 763)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_4bwrw")
+animation = &"fire"
+autoplay = "fire"
+frame_progress = 0.591495
+
+[node name="firesparks" type="GPUParticles2D" parent="Monster Scene/Fires/fireFX4"]
+show_behind_parent = true
+position = Vector2(2.5, -5)
+process_material = SubResource("ParticleProcessMaterial_nn000")
+
+[node name="fireFX5" type="AnimatedSprite2D" parent="Monster Scene/Fires"]
+position = Vector2(1308, 542)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_4bwrw")
+animation = &"fire"
+autoplay = "fire"
+frame_progress = 0.591495
+
+[node name="firesparks" type="GPUParticles2D" parent="Monster Scene/Fires/fireFX5"]
+show_behind_parent = true
+position = Vector2(2.5, -5)
+process_material = SubResource("ParticleProcessMaterial_nn000")
+
+[node name="fireFX6" type="AnimatedSprite2D" parent="Monster Scene/Fires"]
+position = Vector2(1704, 750)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_4bwrw")
+animation = &"fire"
+autoplay = "fire"
+frame_progress = 0.591495
+
+[node name="firesparks" type="GPUParticles2D" parent="Monster Scene/Fires/fireFX6"]
+show_behind_parent = true
+position = Vector2(2.5, -5)
+process_material = SubResource("ParticleProcessMaterial_nn000")
+
+[node name="fireFX7" type="AnimatedSprite2D" parent="Monster Scene/Fires"]
+position = Vector2(1977, 515)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_4bwrw")
+animation = &"fire"
+autoplay = "fire"
+frame_progress = 0.591495
+
+[node name="firesparks" type="GPUParticles2D" parent="Monster Scene/Fires/fireFX7"]
+show_behind_parent = true
+position = Vector2(2.5, -5)
+process_material = SubResource("ParticleProcessMaterial_nn000")
+
+[node name="Buildings1" type="Sprite2D" parent="Monster Scene"]
+position = Vector2(-706, 810)
+scale = Vector2(10, 10)
+texture = SubResource("AtlasTexture_2isvp")
+flip_h = true
+
+[node name="Buildings 2" type="Sprite2D" parent="Monster Scene"]
+position = Vector2(1204, 811)
+scale = Vector2(10, 10)
+texture = SubResource("AtlasTexture_2isvp")
+flip_h = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Monster Scene"]
+offset_left = 2017.0
+offset_top = 106.0
+offset_right = 2188.0
+offset_bottom = 217.0
+scale = Vector2(5, 5)
+alignment = 1
+
+[node name="The End" type="Label" parent="Monster Scene/VBoxContainer"]
+layout_mode = 2
+text = "THE END"
+label_settings = ExtResource("7_cio5i")
+horizontal_alignment = 1
+
+[node name="Thanks for playing" type="Label" parent="Monster Scene/VBoxContainer"]
+layout_mode = 2
+text = "THANKS FOR PLAYING"
+label_settings = SubResource("LabelSettings_vhkh3")
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Monster Scene/VBoxContainer"]
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="Monster Scene/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_k43on")
+text = "EXIT"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Blackbar1" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1920.0
+offset_bottom = 80.0
+color = Color(0, 0, 0, 1)
+
+[node name="Blackbar2" type="ColorRect" parent="CanvasLayer"]
+offset_top = 1000.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="Dialog Sub" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 381.0
+offset_top = 714.0
+offset_right = 381.0
+offset_bottom = 714.0
+scale = Vector2(1.5, 1.5)
+script = ExtResource("6_hpcw0")
+
+[node name="Banner" type="Sprite2D" parent="CanvasLayer/Dialog Sub"]
+position = Vector2(409, 123)
+texture = ExtResource("7_nt8x3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Dialog Sub/Banner"]
+offset_left = -167.0
+offset_top = -55.0
+offset_right = 219.0
+offset_bottom = 46.0
+theme_override_fonts/normal_font = ExtResource("9_k43on")
+theme_override_font_sizes/normal_font_size = 30
+text = "Well, look's like my job here is done. How's everything looking out there? 
+Feeling any better?"
+scroll_active = false
+visible_characters = 0
+visible_ratio = 0.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Character" type="Sprite2D" parent="CanvasLayer/Dialog Sub/Banner"]
+position = Vector2(-295, -48)
+scale = Vector2(7, 7)
+texture = ExtResource("8_xf0xn")
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Dialog Sub"]
+libraries = {
+"": SubResource("AnimationLibrary_rk83o")
+}
+
+[node name="Dialog Monster" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 381.0
+offset_top = 714.0
+offset_right = 381.0
+offset_bottom = 714.0
+scale = Vector2(1.5, 1.5)
+script = ExtResource("6_hpcw0")
+
+[node name="Banner" type="Sprite2D" parent="CanvasLayer/Dialog Monster"]
+position = Vector2(409, 123)
+texture = ExtResource("7_nt8x3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Dialog Monster/Banner"]
+anchors_preset = -1
+anchor_left = -0.056
+anchor_right = -0.056
+offset_left = -193.0
+offset_top = -53.6667
+offset_right = 193.0
+offset_bottom = 47.3333
+theme_override_fonts/normal_font = ExtResource("9_k43on")
+theme_override_font_sizes/normal_font_size = 25
+text = "Much better, thanks! 
+This is the last time I'm eating a gas station, though. Gives me terrible a heart burn..."
+scroll_active = false
+visible_characters = 0
+visible_ratio = 0.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Character" type="Sprite2D" parent="CanvasLayer/Dialog Monster/Banner"]
+position = Vector2(232, -8)
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_0i2p8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Dialog Monster"]
+libraries = {
+"": SubResource("AnimationLibrary_rk83o")
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bwi8u")
+}
+autoplay = "ending"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(48.2153, 27.6449)
+color = Color(0, 0, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(600, 540)
+enabled = false
+zoom = Vector2(5, 5)
+
+[connection signal="pressed" from="Monster Scene/VBoxContainer/CenterContainer/Exit" to="." method="_on_exit_pressed"]

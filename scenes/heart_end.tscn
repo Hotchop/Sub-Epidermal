@@ -1,0 +1,589 @@
+[gd_scene load_steps=42 format=3 uid="uid://16xotjtury38"]
+
+[ext_resource type="Script" path="res://scenes/heart_end.gd" id="1_0vby1"]
+[ext_resource type="PackedScene" uid="uid://d18b8gy8y6nfl" path="res://maps/heart_map.tscn" id="1_3cq46"]
+[ext_resource type="Script" path="res://entities/player.gd" id="2_g3fhw"]
+[ext_resource type="Texture2D" uid="uid://cyx6a3jow3ny5" path="res://assets/fx/bubble.png" id="3_pgyey"]
+[ext_resource type="Texture2D" uid="uid://c4g4ivnt7jskx" path="res://assets/sprites/submarine_sheet.png" id="4_xi4hf"]
+[ext_resource type="Script" path="res://entities/big_stone.gd" id="5_ahhd6"]
+[ext_resource type="Texture2D" uid="uid://1ph816ftmrum" path="res://assets/sprites/rocks.png" id="6_m5yc7"]
+[ext_resource type="PackedScene" uid="uid://b8a1yhkf5rqso" path="res://entities/white_cell.tscn" id="7_7huv6"]
+[ext_resource type="Script" path="res://global/dialog_popup.gd" id="8_jq3uc"]
+[ext_resource type="Texture2D" uid="uid://bydde0dkqphc7" path="res://assets/ui/Text Banner.png" id="9_uvpq6"]
+[ext_resource type="Texture2D" uid="uid://dhvyd34ygbf8p" path="res://assets/sprites/submarine.png" id="10_sjlwx"]
+[ext_resource type="FontFile" uid="uid://cqwhbcwuhylf0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="11_1r8v5"]
+[ext_resource type="Texture2D" uid="uid://djj87xvkw2exb" path="res://assets/ui/AllButtons.png" id="13_6rtoh"]
+[ext_resource type="LabelSettings" uid="uid://be5y4na6117ec" path="res://assets/fonts/Text.tres" id="14_ho8wl"]
+
+[sub_resource type="Curve" id="Curve_0p0mw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.838816, 0.699868), -1.1586, -1.1586, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_3vml5"]
+curve = SubResource("Curve_0p0mw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6odqj"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 9.33
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 100.0
+radial_accel_max = 100.0
+alpha_curve = SubResource("CurveTexture_3vml5")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oaroi"]
+atlas = ExtResource("6_m5yc7")
+region = Rect2(218, 2444, 37, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3fqe"]
+atlas = ExtResource("6_m5yc7")
+region = Rect2(181, 979, 74, 41)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ssgs4"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(20, 20, 20)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 38.71
+radial_accel_max = 100.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tkoun"]
+polygon = PackedVector2Array(9.5, -20.5, 5.5, -20, 5.5, -19, 0.5, -19, 0.5, -18, -3.5, -18, -3.5, -17, -7.5, -17, -7.5, -16, -11.5, -16, -11.5, -15, -15.5, -15, -15.5, -14, -17.5, -14, -17.5, -13, -18.5, -13, -18.5, -9, -28.5, -9, -28.5, -8, -31.3, -8, -32.3, -6, -34.5, -6, -34.5, -5, -35.3, -5, -36.3, -3, -37, -3, -37, 2, -36.5, 5, -35.5, 5, -35.5, 9, -34.5, 9, -34.5, 11, -33.5, 11, -33.5, 12, -31.5, 12, -31.5, 13, -30.5, 13, -30.5, 14, -28.5, 14, -28.5, 15, -21.5, 15, -21.5, 15.8, -19.5, 16.7, -19.5, 18, -18.5, 18, -18.5, 19, -15.5, 19, -15.5, 20, -10.5, 20, 6.5, 20.5, 9.5, 20, 9.5, 19, 12.5, 19, 12.5, 18, 15.5, 18, 15.5, 16, 17.5, 16, 17.5, 15, 18.5, 15, 18.5, 16, 30.5, 16, 30.5, 15, 32.5, 15, 32.5, 14, 34.5, 14, 34.5, 13, 35.5, 13, 35.5, 11, 36.5, 11, 36.5, 2, 35.5, 2, 35.5, 1, 36.5, 1, 36.5, -1, 37, -8, 33.5, -8, 33.5, -9, 29.5, -9, 29.5, -12.8, 27.5, -13.8, 27.5, -16, 26.5, -16, 26.5, -17, 24.5, -17, 24.5, -17.8, 22.5, -18.8, 22.5, -20, 19.5, -20)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_u7yd6"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_teusu"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(5, 1, 1)
+gravity = Vector3(0, -98, 0)
+scale_min = 0.3
+scale_max = 0.5
+turbulence_enabled = true
+collision_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_bkj0i"]
+offsets = PackedFloat32Array(0.409091, 0.701299)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oa7e1"]
+gradient = SubResource("Gradient_bkj0i")
+fill = 1
+fill_from = Vector2(0.509174, 0.495413)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6x1l"]
+atlas = ExtResource("4_xi4hf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ocyg"]
+atlas = ExtResource("4_xi4hf")
+region = Rect2(33, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mt4x8"]
+atlas = ExtResource("4_xi4hf")
+region = Rect2(66, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vv7a"]
+atlas = ExtResource("4_xi4hf")
+region = Rect2(99, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t41cl"]
+atlas = ExtResource("4_xi4hf")
+region = Rect2(132, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwiq8"]
+atlas = ExtResource("4_xi4hf")
+region = Rect2(165, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lug12"]
+atlas = ExtResource("4_xi4hf")
+region = Rect2(198, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pil8e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6x1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ocyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mt4x8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vv7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t41cl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwiq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lug12")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1uh75"]
+radius = 7.03125
+height = 33.5937
+
+[sub_resource type="Animation" id="Animation_klbpw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Banner:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Banner/RichTextLabel:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_fw25t"]
+resource_name = "popup"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Banner:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Banner/RichTextLabel:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.266667, 2.26667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rk83o"]
+_data = {
+"RESET": SubResource("Animation_klbpw"),
+"popup": SubResource("Animation_fw25t")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n33uf"]
+atlas = ExtResource("13_6rtoh")
+region = Rect2(145, 209, 30, 13)
+
+[sub_resource type="Animation" id="Animation_ckhbq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Balckscreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Big Stone/GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Big Stone:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cracks:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Dialog Popup:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Dialog Popup/Banner/RichTextLabel:visible_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Player:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(940, 405)]
+}
+
+[sub_resource type="Animation" id="Animation_ys3gk"]
+resource_name = "cells_help"
+length = 16.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Balckscreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 14.5, 15.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Big Stone/GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Big Stone:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cracks:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Dialog Popup:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 7, 11),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Dialog Popup/Banner/RichTextLabel:visible_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 7.5, 8.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Player:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 11, 14.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(940, 405), Vector2(940, 405), Vector2(940, 900)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_555dv"]
+_data = {
+"RESET": SubResource("Animation_ckhbq"),
+"cells_help": SubResource("Animation_ys3gk")
+}
+
+[node name="Level1 Ending" type="Node2D"]
+script = ExtResource("1_0vby1")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -16005.0
+offset_top = -7616.0
+offset_right = 17765.0
+offset_bottom = 8849.0
+color = Color(0.25098, 0.027451, 0.027451, 1)
+
+[node name="Heart Map" parent="." instance=ExtResource("1_3cq46")]
+position = Vector2(898, -2)
+
+[node name="Cracks" type="GPUParticles2D" parent="."]
+position = Vector2(939, 551)
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_6odqj")
+texture = SubResource("AtlasTexture_oaroi")
+lifetime = 1.2
+one_shot = true
+preprocess = 0.5
+explosiveness = 1.0
+
+[node name="Big Stone" type="StaticBody2D" parent="."]
+position = Vector2(933, 554)
+scale = Vector2(2.5, 2.5)
+script = ExtResource("5_ahhd6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Big Stone"]
+texture = SubResource("AtlasTexture_h3fqe")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Big Stone"]
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_ssgs4")
+one_shot = true
+speed_scale = 3.0
+explosiveness = 0.53
+randomness = 0.44
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Big Stone"]
+polygon = PackedVector2Array(9.5, -20.5, 5.5, -20, 5.5, -19, 0.5, -19, 0.5, -18, -3.5, -18, -3.5, -17, -7.5, -17, -7.5, -16, -11.5, -16, -11.5, -15, -15.5, -15, -15.5, -14, -17.5, -14, -17.5, -13, -18.5, -13, -18.5, -9, -28.5, -9, -28.5, -8, -31.3, -8, -32.3, -6, -34.5, -6, -34.5, -5, -35.3, -5, -36.3, -3, -37, -3, -37, 2, -36.5, 5, -35.5, 5, -35.5, 9, -34.5, 9, -34.5, 11, -33.5, 11, -33.5, 12, -31.5, 12, -31.5, 13, -30.5, 13, -30.5, 14, -28.5, 14, -28.5, 15, -21.5, 15, -21.5, 15.8, -19.5, 16.7, -19.5, 18, -18.5, 18, -18.5, 19, -15.5, 19, -15.5, 20, -10.5, 20, 6.5, 20.5, 9.5, 20, 9.5, 19, 12.5, 19, 12.5, 18, 15.5, 18, 15.5, 16, 17.5, 16, 17.5, 15, 18.5, 15, 18.5, 16, 30.5, 16, 30.5, 15, 32.5, 15, 32.5, 14, 34.5, 14, 34.5, 13, 35.5, 13, 35.5, 11, 36.5, 11, 36.5, 2, 35.5, 2, 35.5, 1, 36.5, 1, 36.5, -1, 37, -8, 33.5, -8, 33.5, -9, 29.5, -9, 29.5, -12.8, 27.5, -13.8, 27.5, -16, 26.5, -16, 26.5, -17, 24.5, -17, 24.5, -17.8, 22.5, -18.8, 22.5, -20, 19.5, -20)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Big Stone"]
+occluder = SubResource("OccluderPolygon2D_tkoun")
+
+[node name="Cells" type="Node2D" parent="."]
+position = Vector2(939, 554)
+scale = Vector2(0.2, 0.2)
+
+[node name="White Cell" parent="Cells" instance=ExtResource("7_7huv6")]
+position = Vector2(-400, -75)
+rotation = -0.202839
+monitoring = false
+
+[node name="White Cell2" parent="Cells" instance=ExtResource("7_7huv6")]
+position = Vector2(230, -220)
+rotation = 0.385655
+monitoring = false
+
+[node name="White Cell3" parent="Cells" instance=ExtResource("7_7huv6")]
+position = Vector2(385, -25)
+rotation = 0.989471
+monitoring = false
+
+[node name="White Cell4" parent="Cells" instance=ExtResource("7_7huv6")]
+position = Vector2(350, 175)
+rotation = -0.373647
+monitoring = false
+
+[node name="White Cell5" parent="Cells" instance=ExtResource("7_7huv6")]
+position = Vector2(-405, 160)
+rotation = 0.361347
+monitoring = false
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(940, 405)
+scale = Vector2(3, 3)
+motion_mode = 1
+script = ExtResource("2_g3fhw")
+canMove = false
+canShoot = false
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Player"]
+material = SubResource("CanvasItemMaterial_u7yd6")
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_teusu")
+texture = ExtResource("3_pgyey")
+lifetime = 2.0
+speed_scale = 1.5
+
+[node name="PointLight2D" type="PointLight2D" parent="Player"]
+position = Vector2(0, 5.33333)
+energy = 0.8
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_oa7e1")
+texture_scale = 1.5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_pil8e")
+autoplay = "default"
+frame_progress = 0.222077
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-1.66667, 6.33333)
+rotation = 1.5708
+scale = Vector2(0.853334, 0.853334)
+shape = SubResource("CapsuleShape2D_1uh75")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer"]
+position = Vector2(943, 475)
+zoom = Vector2(2.5, 2.5)
+
+[node name="Blackbar1" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1920.0
+offset_bottom = 80.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Blackbar2" type="ColorRect" parent="CanvasLayer"]
+offset_top = 1000.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Balckscreen" type="ColorRect" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(49.288, 27.9057)
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Dialog Popup" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 461.0
+offset_top = 815.0
+offset_right = -800.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+script = ExtResource("8_jq3uc")
+
+[node name="Banner" type="Sprite2D" parent="CanvasLayer/Dialog Popup"]
+position = Vector2(409, 123)
+texture = ExtResource("9_uvpq6")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Dialog Popup/Banner"]
+offset_left = -167.0
+offset_top = -55.0
+offset_right = 219.0
+offset_bottom = 46.0
+theme_override_fonts/normal_font = ExtResource("11_1r8v5")
+theme_override_font_sizes/normal_font_size = 30
+text = "Thanks for the help, little guys!
+I'll be on my way now."
+scroll_active = false
+visible_characters = 0
+visible_ratio = 0.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Character" type="Sprite2D" parent="CanvasLayer/Dialog Popup/Banner"]
+position = Vector2(-295, -48)
+scale = Vector2(7, 7)
+texture = ExtResource("10_sjlwx")
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Dialog Popup"]
+libraries = {
+"": SubResource("AnimationLibrary_rk83o")
+}
+
+[node name="Space" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1851, 1040)
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_n33uf")
+
+[node name="Skip" type="Label" parent="CanvasLayer/Space"]
+offset_left = -83.0
+offset_top = -8.0
+offset_right = 142.0
+offset_bottom = 47.0
+scale = Vector2(0.3, 0.3)
+text = "Hold to Skip"
+label_settings = ExtResource("14_ho8wl")
+horizontal_alignment = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_555dv")
+}
+autoplay = "cells_help"
+
+[node name="Skip Intro" type="Timer" parent="."]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Skip Intro" to="." method="_on_skip_intro_timeout"]

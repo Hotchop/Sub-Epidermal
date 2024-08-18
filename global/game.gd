@@ -10,6 +10,9 @@ signal death()
 signal infection_lowered()
 signal infection_cleared()
 
+var musicVolume = 100
+var soundVolume = 100
+
 var player_hp: float = MAX_HP
 var player_oxigen: float = MAX_O2
 var infection_level: float = MAX_INFECTION

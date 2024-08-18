@@ -1,6 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://dtiikx4w6vkwn"]
+[gd_scene load_steps=28 format=3 uid="uid://dtiikx4w6vkwn"]
 
-[ext_resource type="Script" path="res://saves/heart_level.gd" id="1_2io76"]
+[ext_resource type="Script" path="res://scenes/heart_level.gd" id="1_2io76"]
 [ext_resource type="PackedScene" uid="uid://d18b8gy8y6nfl" path="res://maps/heart_map.tscn" id="1_n6bvx"]
 [ext_resource type="PackedScene" uid="uid://bacxitw523mgg" path="res://entities/player.tscn" id="1_ol24k"]
 [ext_resource type="PackedScene" uid="uid://d07e7av40yjvt" path="res://entities/stone.tscn" id="3_h1jfv"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cc2l1ks8shknq" path="res://entities/blood_cell.tscn" id="6_icmee"]
 [ext_resource type="PackedScene" uid="uid://6bmcaphepj8x" path="res://entities/charger.tscn" id="7_ifs15"]
 [ext_resource type="PackedScene" uid="uid://c70154gk5jebi" path="res://entities/big_stone.tscn" id="9_d13a4"]
+[ext_resource type="LabelSettings" uid="uid://bxq8exieglrod" path="res://assets/fonts/Bars.tres" id="10_m4dqr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p372y"]
 atlas = ExtResource("3_p6vud")
@@ -291,10 +292,12 @@ texture_progress_offset = Vector2(3.015, 2)
 [node name="Label" type="Label" parent="CanvasLayer/Progress Bars/HP"]
 layout_mode = 0
 offset_left = 38.0
-offset_right = 106.0
-offset_bottom = 23.0
+offset_top = -3.2
+offset_right = 128.0
+offset_bottom = 30.8
 scale = Vector2(0.5, 0.5)
 text = "HULL"
+label_settings = ExtResource("10_m4dqr")
 horizontal_alignment = 1
 
 [node name="Oxigen" type="TextureProgressBar" parent="CanvasLayer/Progress Bars"]
@@ -314,11 +317,12 @@ texture_progress_offset = Vector2(3, 2)
 [node name="Label" type="Label" parent="CanvasLayer/Progress Bars/Oxigen"]
 layout_mode = 0
 offset_left = 38.0
-offset_top = -0.600002
-offset_right = 105.0
-offset_bottom = 22.4
+offset_top = -3.6
+offset_right = 128.0
+offset_bottom = 30.4
 scale = Vector2(0.5, 0.5)
 text = "OXIGEN"
+label_settings = ExtResource("10_m4dqr")
 horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="CanvasLayer/Progress Bars/Oxigen"]
@@ -348,13 +352,15 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -107.0
-offset_top = -0.4
-offset_right = 27.0
-offset_bottom = 22.6
+offset_left = -106.2
+offset_top = -3.0
+offset_right = 52.8
+offset_bottom = 31.0
 grow_horizontal = 0
 scale = Vector2(0.5, 0.5)
-text = "INFECTION LEVEL"
+text = "INFECTION"
+label_settings = ExtResource("10_m4dqr")
+horizontal_alignment = 1
 
 [node name="Dialog Popup" parent="CanvasLayer" instance=ExtResource("5_ptxo0")]
 visible = false

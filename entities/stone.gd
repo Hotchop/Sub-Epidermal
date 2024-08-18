@@ -12,4 +12,9 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		hp -= 25
 		if hp <= 0:
 			Game.lower_infection(10)
+			$CollisionPolygon2D.set_deferred("disabled",true)
+			var tween = get_tree().create_tween()
+			tween.tween_property($Sprite2D,"modulate",Color(1, 1, 1, 0),1)
+			$Cracks.emitting = true
+			await get_tree().create_timer(1).timeout
 			queue_free()
