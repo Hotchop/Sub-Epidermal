@@ -39,6 +39,7 @@ func _on_body_body_entered(body: Node2D) -> void:
 
 func _on_body_area_entered(area: Area2D) -> void:
 	if area.name == "Torpedo":
+		FxManager.play_fx(FxManager.HIT)
 		area.queue_free()
 		get_hit(DAMAGE)
 
@@ -51,6 +52,7 @@ func get_hit(value):
 		
 		
 func explode():
+	FxManager.play_fx(FxManager.EXPLOSION)
 	$CollisionShape2D.set_deferred("disabled",true)
 	canDamage = false
 	canMove = false

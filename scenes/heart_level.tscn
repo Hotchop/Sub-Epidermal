@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dtiikx4w6vkwn"]
+[gd_scene load_steps=35 format=3 uid="uid://dtiikx4w6vkwn"]
 
 [ext_resource type="Script" path="res://scenes/heart_level.gd" id="1_2io76"]
 [ext_resource type="PackedScene" uid="uid://d18b8gy8y6nfl" path="res://maps/heart_map.tscn" id="1_n6bvx"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://6bmcaphepj8x" path="res://entities/charger.tscn" id="7_ifs15"]
 [ext_resource type="PackedScene" uid="uid://c70154gk5jebi" path="res://entities/big_stone.tscn" id="9_d13a4"]
 [ext_resource type="LabelSettings" uid="uid://bxq8exieglrod" path="res://assets/fonts/Bars.tres" id="10_m4dqr"]
+[ext_resource type="Script" path="res://scenes/pause.gd" id="13_4ksgi"]
+[ext_resource type="LabelSettings" uid="uid://cki0inscy3gsp" path="res://assets/fonts/Title.tres" id="13_kuov5"]
+[ext_resource type="FontFile" uid="uid://cqwhbcwuhylf0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="14_62aqj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d04og"]
 atlas = ExtResource("4_emq32")
@@ -115,6 +118,7 @@ atlas = ExtResource("3_p6vud")
 region = Rect2(631, 118, 34, 5)
 
 [node name="Heart Level" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_2io76")
 
 [node name="Backdrops" type="Node2D" parent="."]
@@ -317,8 +321,7 @@ position = Vector2(2808, 371)
 position = Vector2(2819, -1097)
 
 [node name="Player" parent="." instance=ExtResource("1_ol24k")]
-top_level = true
-visibility_layer = 3
+visibility_layer = 2
 position = Vector2(954, 532)
 scale = Vector2(2, 2)
 
@@ -424,6 +427,38 @@ offset_right = -885.0
 offset_bottom = -115.0
 scale = Vector2(1.68, 1.68)
 
+[node name="Pause" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("13_4ksgi")
+
+[node name="Label" type="Label" parent="Pause"]
+offset_left = 719.0
+offset_top = 14.0
+offset_right = 837.0
+offset_bottom = 68.0
+scale = Vector2(4, 4)
+text = "PAUSE"
+label_settings = ExtResource("13_kuov5")
+
+[node name="Back" type="Button" parent="Pause"]
+offset_left = 650.0
+offset_top = 917.0
+offset_right = 709.0
+offset_bottom = 943.0
+scale = Vector2(4, 4)
+theme_override_fonts/font = ExtResource("14_62aqj")
+text = "CONTINUE"
+
+[node name="Back to Menu" type="Button" parent="Pause"]
+offset_left = 984.0
+offset_top = 921.0
+offset_right = 1068.0
+offset_bottom = 947.0
+scale = Vector2(4, 4)
+theme_override_fonts/font = ExtResource("14_62aqj")
+text = "BACK TO MENU"
+
 [connection signal="timeout" from="Tutorial/Tutorial" to="." method="_on_tutorial_timeout"]
 [connection signal="body_entered" from="Objects/Big Stone/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="picked_up" from="Pick Ups/White Cell" to="." method="_on_white_cell_picked_up"]
@@ -435,5 +470,7 @@ scale = Vector2(1.68, 1.68)
 [connection signal="health_full" from="Pick Ups/Blood Cell2" to="." method="_on_blood_cell_2_health_full"]
 [connection signal="health_full" from="Pick Ups/Blood Cell3" to="." method="_on_blood_cell_3_health_full"]
 [connection signal="timeout" from="CanvasLayer/Progress Bars/Oxigen/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Pause/Back" to="Pause" method="_on_back_pressed"]
+[connection signal="pressed" from="Pause/Back to Menu" to="Pause" method="_on_back_to_menu_pressed"]
 
 [editable path="Objects/Big Stone"]

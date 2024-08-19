@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cu71wgj7y1nqd"]
 
-[ext_resource type="Script" path="res://torpedo.gd" id="1_fhavb"]
+[ext_resource type="Script" path="res://entities/torpedo.gd" id="1_fhavb"]
 [ext_resource type="Texture2D" uid="uid://dnr83w5ah27jy" path="res://assets/sprites/torpedo.png" id="2_vny4j"]
 
 [node name="Torpedo" type="Area2D"]

@@ -43,6 +43,7 @@ func _shoot():
 		var spawnPosition = global_position
 		spawnPosition.y +=10
 		torpedo.set_torpedo(spawnPosition,targetPosition)
+		FxManager.play_fx(FxManager.TORPEDO)
 		get_parent().add_child(torpedo)
 		
 		await get_tree().create_timer(1).timeout
@@ -54,6 +55,7 @@ func explode():
 	self.canShoot = false
 	var tween = get_tree().create_tween()
 	tween.tween_property($AnimatedSprite2D,"modulate",Color(1,1,1,0),0.5)
+	FxManager.play_fx(FxManager.EXPLOSION)
 	$fireFX.play("subExplosion")
 
 

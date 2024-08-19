@@ -32,13 +32,13 @@ scale_max = 3.0
 turbulence_enabled = true
 collision_mode = 2
 
-[sub_resource type="Gradient" id="Gradient_xxjt8"]
+[sub_resource type="Gradient" id="Gradient_v8hvn"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0.412338, 0.691558)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_1sr40"]
-gradient = SubResource("Gradient_xxjt8")
+gradient = SubResource("Gradient_v8hvn")
 width = 250
 height = 150
 fill = 1
@@ -176,7 +176,8 @@ horizontal_alignment = 1
 [node name="Music Slider" type="HSlider" parent="Settings/VBoxContainer"]
 modulate = Color(1, 1, 0, 1)
 layout_mode = 2
-value = 100.0
+max_value = 50.0
+value = 50.0
 
 [node name="Sound Effects" type="Label" parent="Settings/VBoxContainer"]
 layout_mode = 2
@@ -186,7 +187,8 @@ label_settings = ExtResource("9_vx3g3")
 [node name="Effects Slider" type="HSlider" parent="Settings/VBoxContainer"]
 modulate = Color(1, 1, 0, 1)
 layout_mode = 2
-value = 100.0
+max_value = 50.0
+value = 50.0
 
 [node name="CenterContainer" type="CenterContainer" parent="Settings/VBoxContainer"]
 layout_mode = 2
@@ -201,6 +203,7 @@ text = "BACK"
 [connection signal="pressed" from="Menu/CenterContainer3/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Menu/CenterContainer4/Exit" to="." method="_on_exit_pressed"]
 [connection signal="value_changed" from="Settings/VBoxContainer/Music Slider" to="." method="_on_music_slider_value_changed"]
+[connection signal="drag_ended" from="Settings/VBoxContainer/Effects Slider" to="." method="_on_effects_slider_drag_ended"]
 [connection signal="value_changed" from="Settings/VBoxContainer/Effects Slider" to="." method="_on_effects_slider_value_changed"]
 [connection signal="pressed" from="Settings/VBoxContainer/CenterContainer/Back" to="." method="_on_back_pressed"]
 

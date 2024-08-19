@@ -1,6 +1,10 @@
 extends Node2D
 
 var success = false
+
+func _ready() -> void:
+	AudioManager.play_game_music()
+
 func _process(_delta: float) -> void:
 	track_time_button()
 

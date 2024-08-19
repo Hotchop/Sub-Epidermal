@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d4hi5dowcr2lo"
+path="res://.godot/imported/Action Music.ogg-32a18f107ca0a39489b6a0abb610ae8d.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/Action Music.ogg"
+dest_files=["res://.godot/imported/Action Music.ogg-32a18f107ca0a39489b6a0abb610ae8d.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

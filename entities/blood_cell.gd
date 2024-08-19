@@ -8,6 +8,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		if Game.player_hp < 100:
 			Game.heal(HEAL)
+			FxManager.play_fx(FxManager.PICKUP)
 			self.queue_free()
 		else:
 			health_full.emit("I don't need repairs at the moment")

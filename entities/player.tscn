@@ -89,6 +89,8 @@ radius = 7.03125
 height = 33.5937
 
 [node name="Player" type="CharacterBody2D"]
+top_level = true
+visibility_layer = 3
 scale = Vector2(3, 3)
 motion_mode = 1
 script = ExtResource("2_3qnp6")

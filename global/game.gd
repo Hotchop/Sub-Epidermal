@@ -18,6 +18,10 @@ var player_oxigen: float = MAX_O2
 var infection_level: float = MAX_INFECTION
 var white_blood_cells: int = 0
 
+var newGame = true
+var stage2 = false
+var hardMode = false
+
 func heal(value: float):
 	if (player_hp + value) >= 100:
 		player_hp = 100

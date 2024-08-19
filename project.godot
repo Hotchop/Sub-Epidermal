@@ -11,14 +11,22 @@ config_version=5
 [application]
 
 config/name="Sub Epidermal"
+config/description="Jump aboard the Sub Epidermal, and clear the patients body of it's infection, before time runs out..."
+config/version="1.0.0"
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 run/max_fps=60
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://assets/ui/splashscreen.png"
+boot_splash/fullsize=false
+config/icon="res://assets/sprites/submarine.png"
 
 [autoload]
 
+SaveSystem="*res://global/save_system.gd"
 Game="*res://global/game.gd"
+AudioManager="*res://global/audio_manager.gd"
+FxManager="*res://global/fx_manager.gd"
 
 [display]
 
