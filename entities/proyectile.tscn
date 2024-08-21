@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://b68pavhfeiput"]
+
+[ext_resource type="Script" path="res://entities/proyectile.gd" id="1_e8hom"]
+[ext_resource type="Texture2D" uid="uid://cqteovw1qc77" path="res://assets/sprites/shootingEnemy/proyectile.png" id="1_nioie"]
+[ext_resource type="Shader" path="res://entities/great_indigestion.gdshader" id="2_26fhi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oyied"]
+shader = ExtResource("2_26fhi")
+shader_parameter/resolution = 64.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8rvbm"]
+radius = 37.6563
+
+[node name="Proyectile" type="Area2D" groups=["Projectile"]]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_e8hom")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_oyied")
+position = Vector2(0, 2)
+rotation = 0.265214
+texture = ExtResource("1_nioie")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8rvbm")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -85,8 +85,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1uh75"]
-radius = 7.03125
-height = 33.5937
+radius = 8.20312
+height = 35.9375
 
 [node name="Player" type="CharacterBody2D"]
 top_level = true
@@ -127,5 +127,15 @@ zoom = Vector2(2, 2)
 [node name="fireFX" parent="." instance=ExtResource("4_in57w")]
 position = Vector2(0, 6.33333)
 animation = &"subExplosion"
+frame_progress = 0.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.66667, 6.33333)
+rotation = 1.5708
+scale = Vector2(0.853334, 0.853334)
+shape = SubResource("CapsuleShape2D_1uh75")
 
 [connection signal="animation_finished" from="fireFX" to="." method="_on_fire_fx_animation_finished"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

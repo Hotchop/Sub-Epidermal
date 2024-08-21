@@ -20,13 +20,20 @@ func _physics_process(_delta: float) -> void:
 			get_node("AnimatedSprite2D").flip_h = true
 		if direction_x:
 			velocity.x = move_toward(velocity.x, direction_x*SPEED, ACCELERATION)
+			velocity.normalized()
 		else:
 			velocity.x = move_toward(velocity.x, 0, ACCELERATION)
+			velocity.normalized()
 		if direction_y:
 			velocity.y = move_toward(velocity.y, direction_y*SPEED, ACCELERATION)
+			velocity.normalized()
 		else:
 			velocity.y = move_toward(velocity.y, 0, ACCELERATION)
+		if velocity.length() > 1: 
+			velocity.normalized()
+
 		move_and_slide()
+		
 	if canShoot:
 		_shoot()
 
@@ -61,3 +68,14 @@ func explode():
 
 func _on_fire_fx_animation_finished() -> void:
 	self.visible = false
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	print(area.name," entered")
+	if area.is_in_group("Projectile"):
+		FxManager.play_fx(FxManager.HIT)
+		area.queue_free()
+		if Game.hardModeGame:
+			Game.damage(15)
+		else:
+			Game.damage(10)

@@ -6,10 +6,17 @@ func _ready() -> void:
 	Game.infection_lowered.connect(_on_infection_lowered)
 	Game.infection_cleared.connect(_on_infection_cleared)
 	Game.healt_changed.connect(_on_hp_change)
+	Game.o2_refill.connect(_on_o2_refill)
 	Game.death.connect(player_died)
-	$"CanvasLayer/Progress Bars/Oxigen".value = Game.player_oxigen
 	$"CanvasLayer/Progress Bars/Infection".value = Game.infection_level
 	$"CanvasLayer/Progress Bars/HP".value = Game.player_hp
+	if Game.hardModeGame:
+		$"CanvasLayer/Progress Bars/Oxigen".max_value = Game.MAX_HARDMODE_O2
+		$"CanvasLayer/Progress Bars/Oxigen".value = Game.MAX_HARDMODE_O2
+	else:
+		$Oxigen.queue_free()
+		$"CanvasLayer/Progress Bars/Oxigen".max_value = Game.MAX_O2
+		$"CanvasLayer/Progress Bars/Oxigen".value = Game.MAX_O2
 	
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel") and get_tree().paused == false:
@@ -29,6 +36,9 @@ func _on_infection_cleared():
 
 func _on_hp_change():
 	$"CanvasLayer/Progress Bars/HP".value = Game.player_hp
+
+func _on_o2_refill(value):
+	$"CanvasLayer/Progress Bars/Oxigen".value += value
 
 #Progression
 func player_died():

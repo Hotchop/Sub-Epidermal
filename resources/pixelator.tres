@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://0q2qge31tat5"]
+
+[ext_resource type="Shader" path="res://entities/great_indigestion.gdshader" id="1_erb78"]
+
+[resource]
+shader = ExtResource("1_erb78")
+shader_parameter/resolution = 64.0

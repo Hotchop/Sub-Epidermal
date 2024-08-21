@@ -3,15 +3,12 @@ extends Node2D
 var success = false
 
 func _ready() -> void:
-	AudioManager.play_game_music()
+	Game.stage2 = true
+	AudioManager.play_action_music()
+	$AudioStreamPlayer.volume_db = FxManager.volume_db
 
 func _process(_delta: float) -> void:
 	track_time_button()
-
-
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "cells_help":
-		get_tree().change_scene_to_file("res://scenes/boss_intro.tscn")
 
 func track_time_button():
 	var button_time = 2
@@ -24,7 +21,10 @@ func track_time_button():
 		else:
 			print('fail')
 
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "boss_enter":
+		get_tree().change_scene_to_file("res://scenes/bossfight.tscn")
+
+
 func _on_skip_intro_timeout() -> void:
-	print('success')
-	success = true
-	get_tree().change_scene_to_file("res://scenes/boss_intro.tscn")
+	get_tree().change_scene_to_file("res://scenes/bossfight.tscn")

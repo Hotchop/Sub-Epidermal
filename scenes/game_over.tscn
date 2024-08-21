@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://bt7ayrp5s44g1"]
+[gd_scene load_steps=26 format=3 uid="uid://bt7ayrp5s44g1"]
 
 [ext_resource type="Texture2D" uid="uid://cyx6a3jow3ny5" path="res://assets/fx/bubble.png" id="1_0nvqg"]
 [ext_resource type="Script" path="res://scenes/game_over.gd" id="1_xtjwk"]
-[ext_resource type="PackedScene" uid="uid://bacxitw523mgg" path="res://entities/player.tscn" id="2_dn7mk"]
 [ext_resource type="Texture2D" uid="uid://1ph816ftmrum" path="res://assets/sprites/rocks.png" id="3_uw5fu"]
+[ext_resource type="Script" path="res://entities/player.gd" id="3_wkf2l"]
+[ext_resource type="Texture2D" uid="uid://c4g4ivnt7jskx" path="res://assets/sprites/submarine_sheet.png" id="4_5q4ff"]
 [ext_resource type="FontFile" uid="uid://c68ejhvbwea2s" path="res://assets/fonts/Bungee_Tint/BungeeTint-Regular.ttf" id="5_nu5ej"]
+[ext_resource type="PackedScene" uid="uid://4n2ppvs6ckaw" path="res://global/fireFX.tscn" id="5_s2bon"]
 [ext_resource type="FontFile" uid="uid://cqwhbcwuhylf0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="6_htnmu"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_u7yd6"]
@@ -17,6 +19,89 @@ gravity = Vector3(0, -98, 0)
 scale_max = 2.0
 turbulence_enabled = true
 collision_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4hwx4"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mc3cn"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(5, 1, 1)
+gravity = Vector3(0, -98, 0)
+scale_min = 0.3
+scale_max = 0.5
+turbulence_enabled = true
+collision_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_bkj0i"]
+offsets = PackedFloat32Array(0.409091, 0.701299)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oa7e1"]
+gradient = SubResource("Gradient_bkj0i")
+fill = 1
+fill_from = Vector2(0.509174, 0.495413)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6x1l"]
+atlas = ExtResource("4_5q4ff")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ocyg"]
+atlas = ExtResource("4_5q4ff")
+region = Rect2(33, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mt4x8"]
+atlas = ExtResource("4_5q4ff")
+region = Rect2(66, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vv7a"]
+atlas = ExtResource("4_5q4ff")
+region = Rect2(99, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t41cl"]
+atlas = ExtResource("4_5q4ff")
+region = Rect2(132, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwiq8"]
+atlas = ExtResource("4_5q4ff")
+region = Rect2(165, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lug12"]
+atlas = ExtResource("4_5q4ff")
+region = Rect2(198, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pil8e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6x1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ocyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mt4x8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vv7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t41cl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwiq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lug12")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1uh75"]
+radius = 8.20312
+height = 35.9375
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_id67p"]
 atlas = ExtResource("3_uw5fu")
@@ -48,18 +133,59 @@ texture = ExtResource("1_0nvqg")
 lifetime = 3.0
 speed_scale = 2.0
 
-[node name="Player" parent="." instance=ExtResource("2_dn7mk")]
+[node name="Player" type="CharacterBody2D" parent="."]
+visibility_layer = 3
 position = Vector2(861.805, 871.634)
 rotation = -2.47794
 scale = Vector2(12.7527, 12.7527)
+motion_mode = 1
+script = ExtResource("3_wkf2l")
 canMove = false
 canShoot = false
 
-[node name="GPUParticles2D" parent="Player" index="0"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Player"]
+material = SubResource("CanvasItemMaterial_4hwx4")
 emitting = false
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_mc3cn")
+texture = ExtResource("1_0nvqg")
+lifetime = 2.0
+speed_scale = 1.5
 
-[node name="Camera2D" parent="Player" index="4"]
+[node name="PointLight2D" type="PointLight2D" parent="Player"]
+position = Vector2(0, 5.33333)
+energy = 0.8
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_oa7e1")
+texture_scale = 1.5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_pil8e")
+autoplay = "default"
+frame_progress = 0.222077
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-1.66667, 6.33333)
+rotation = 1.5708
+scale = Vector2(0.853334, 0.853334)
+shape = SubResource("CapsuleShape2D_1uh75")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
 enabled = false
+zoom = Vector2(2, 2)
+
+[node name="fireFX" parent="Player" instance=ExtResource("5_s2bon")]
+position = Vector2(0, 6.33333)
+animation = &"subExplosion"
+frame_progress = 0.0
+
+[node name="Area2D" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+position = Vector2(-1.66667, 6.33333)
+rotation = 1.5708
+scale = Vector2(0.853334, 0.853334)
+shape = SubResource("CapsuleShape2D_1uh75")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(947.805, 881.634)
@@ -102,7 +228,7 @@ theme_override_fonts/font = ExtResource("6_htnmu")
 theme_override_font_sizes/font_size = 20
 text = "EXIT"
 
+[connection signal="animation_finished" from="Player/fireFX" to="Player" method="_on_fire_fx_animation_finished"]
+[connection signal="area_entered" from="Player/Area2D" to="Player" method="_on_area_2d_area_entered"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/Return" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer3/Exit" to="." method="_on_exit_pressed"]
-
-[editable path="Player"]

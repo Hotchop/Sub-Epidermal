@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0scmyjuqdpbr"]
+
+[ext_resource type="Texture2D" uid="uid://cyx6a3jow3ny5" path="res://assets/fx/bubble.png" id="1_jbxbu"]
+[ext_resource type="Script" path="res://entities/o_2_pickup.gd" id="1_qc48y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_14puj"]
+radius = 20.025
+
+[node name="O2 Pickup" type="Area2D"]
+script = ExtResource("1_qc48y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+shape = SubResource("CircleShape2D_14puj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jbxbu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dtiikx4w6vkwn"]
+[gd_scene load_steps=38 format=3 uid="uid://dtiikx4w6vkwn"]
 
 [ext_resource type="Script" path="res://scenes/heart_level.gd" id="1_2io76"]
 [ext_resource type="PackedScene" uid="uid://d18b8gy8y6nfl" path="res://maps/heart_map.tscn" id="1_n6bvx"]
@@ -11,7 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://cc2l1ks8shknq" path="res://entities/blood_cell.tscn" id="6_icmee"]
 [ext_resource type="PackedScene" uid="uid://6bmcaphepj8x" path="res://entities/charger.tscn" id="7_ifs15"]
 [ext_resource type="PackedScene" uid="uid://c70154gk5jebi" path="res://entities/big_stone.tscn" id="9_d13a4"]
+[ext_resource type="PackedScene" uid="uid://d0scmyjuqdpbr" path="res://entities/o_2_pickup.tscn" id="9_ulc6f"]
+[ext_resource type="PackedScene" uid="uid://b447cf2ojg12f" path="res://entities/shooter.tscn" id="10_hces6"]
 [ext_resource type="LabelSettings" uid="uid://bxq8exieglrod" path="res://assets/fonts/Bars.tres" id="10_m4dqr"]
+[ext_resource type="Material" uid="uid://0q2qge31tat5" path="res://resources/pixelator.tres" id="11_0ve04"]
 [ext_resource type="Script" path="res://scenes/pause.gd" id="13_4ksgi"]
 [ext_resource type="LabelSettings" uid="uid://cki0inscy3gsp" path="res://assets/fonts/Title.tres" id="13_kuov5"]
 [ext_resource type="FontFile" uid="uid://cqwhbcwuhylf0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="14_62aqj"]
@@ -245,6 +248,9 @@ scale = Vector2(6.82099, 6.82099)
 position = Vector2(1024, 1090)
 scale = Vector2(2.5, 2.5)
 
+[node name="Area2D" parent="Objects/Big Stone" index="4"]
+scale = Vector2(1.63, 1.63)
+
 [node name="Pick Ups" type="Node" parent="."]
 
 [node name="White Cell" parent="Pick Ups" instance=ExtResource("5_0fmnp")]
@@ -279,46 +285,94 @@ scale = Vector2(0.2, 0.2)
 position = Vector2(-112, -638)
 scale = Vector2(0.2, 0.2)
 
+[node name="Oxigen" type="Node2D" parent="."]
+
+[node name="O2 Pickup" parent="Oxigen" instance=ExtResource("9_ulc6f")]
+position = Vector2(-888, -324)
+
+[node name="O2 Pickup2" parent="Oxigen" instance=ExtResource("9_ulc6f")]
+position = Vector2(1264, 1496)
+
+[node name="O2 Pickup3" parent="Oxigen" instance=ExtResource("9_ulc6f")]
+position = Vector2(2815, -1099)
+
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Charger" parent="Enemies" instance=ExtResource("7_ifs15")]
+material = ExtResource("11_0ve04")
 position = Vector2(-712, 948)
 
 [node name="Charger2" parent="Enemies" instance=ExtResource("7_ifs15")]
+material = ExtResource("11_0ve04")
 position = Vector2(-457, 1322)
 
 [node name="Charger3" parent="Enemies" instance=ExtResource("7_ifs15")]
+material = ExtResource("11_0ve04")
 position = Vector2(-510, -902)
 
 [node name="Charger4" parent="Enemies" instance=ExtResource("7_ifs15")]
+material = ExtResource("11_0ve04")
 position = Vector2(2133, -1019)
 
 [node name="Charger5" parent="Enemies" instance=ExtResource("7_ifs15")]
+material = ExtResource("11_0ve04")
 position = Vector2(1952, 721)
 
 [node name="Charger6" parent="Enemies" instance=ExtResource("7_ifs15")]
+material = ExtResource("11_0ve04")
 position = Vector2(409, 2202)
 
 [node name="Charger7" parent="Enemies" instance=ExtResource("7_ifs15")]
+material = ExtResource("11_0ve04")
 position = Vector2(2250, 2240)
 
 [node name="Charger8" parent="Enemies" instance=ExtResource("7_ifs15")]
+material = ExtResource("11_0ve04")
 position = Vector2(2716, 2131)
 
 [node name="Charger9" parent="Enemies" instance=ExtResource("7_ifs15")]
+material = ExtResource("11_0ve04")
 position = Vector2(580, 1280)
 
 [node name="Charger10" parent="Enemies" instance=ExtResource("7_ifs15")]
+material = ExtResource("11_0ve04")
 position = Vector2(1018, -1299)
 
 [node name="Charger11" parent="Enemies" instance=ExtResource("7_ifs15")]
+material = ExtResource("11_0ve04")
 position = Vector2(-891, 321)
 
 [node name="Charger12" parent="Enemies" instance=ExtResource("7_ifs15")]
+material = ExtResource("11_0ve04")
 position = Vector2(2808, 371)
 
 [node name="Charger13" parent="Enemies" instance=ExtResource("7_ifs15")]
-position = Vector2(2819, -1097)
+material = ExtResource("11_0ve04")
+position = Vector2(2595, -747)
+
+[node name="Shooter" parent="Enemies" instance=ExtResource("10_hces6")]
+material = ExtResource("11_0ve04")
+position = Vector2(29, 2245)
+
+[node name="Shooter2" parent="Enemies" instance=ExtResource("10_hces6")]
+material = ExtResource("11_0ve04")
+position = Vector2(-556, -1126)
+
+[node name="Shooter3" parent="Enemies" instance=ExtResource("10_hces6")]
+material = ExtResource("11_0ve04")
+position = Vector2(-535, 1098)
+
+[node name="Shooter4" parent="Enemies" instance=ExtResource("10_hces6")]
+material = ExtResource("11_0ve04")
+position = Vector2(2437, 2124)
+
+[node name="Shooter5" parent="Enemies" instance=ExtResource("10_hces6")]
+material = ExtResource("11_0ve04")
+position = Vector2(1996, -1219)
+
+[node name="Shooter6" parent="Enemies" instance=ExtResource("10_hces6")]
+material = ExtResource("11_0ve04")
+position = Vector2(1283, 2331)
 
 [node name="Player" parent="." instance=ExtResource("1_ol24k")]
 visibility_layer = 2

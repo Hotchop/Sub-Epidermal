@@ -2,6 +2,7 @@ extends Node
 
 const MAX_HP = 100
 const MAX_O2 = 600
+const MAX_HARDMODE_O2 = 240
 const MAX_INFECTION = 100
 const MAX_CELL = 5
 
@@ -9,6 +10,7 @@ signal healt_changed()
 signal death()
 signal infection_lowered()
 signal infection_cleared()
+signal o2_refill(value)
 
 var musicVolume = 100
 var soundVolume = 100
@@ -21,6 +23,8 @@ var white_blood_cells: int = 0
 var newGame = true
 var stage2 = false
 var hardMode = false
+
+var hardModeGame = false
 
 func heal(value: float):
 	if (player_hp + value) >= 100:
@@ -46,3 +50,6 @@ func lower_infection(value: float):
 		infection_lowered.emit()
 		if infection_level <= 0:
 			infection_cleared.emit()
+
+func oxigen_refill(value):
+	o2_refill.emit(value)

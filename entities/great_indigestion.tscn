@@ -1,0 +1,92 @@
+[gd_scene load_steps=17 format=3 uid="uid://cyw6ds3swfgl8"]
+
+[ext_resource type="Texture2D" uid="uid://bwpptggtw4p61" path="res://assets/sprites/boss/png13.png" id="1_ji7wt"]
+[ext_resource type="Shader" path="res://entities/great_indigestion.gdshader" id="1_vdesb"]
+[ext_resource type="Script" path="res://entities/great_indigestion.gd" id="1_yucss"]
+[ext_resource type="Texture2D" uid="uid://bartn304hb5dr" path="res://assets/sprites/boss/png14.png" id="2_ob0m1"]
+[ext_resource type="Texture2D" uid="uid://dotf0ybmcwb27" path="res://assets/sprites/boss/png15.png" id="3_ed07h"]
+[ext_resource type="Texture2D" uid="uid://daaxdf5xfnjr1" path="res://assets/sprites/boss/png16.png" id="4_x0o3a"]
+[ext_resource type="Texture2D" uid="uid://di7emsoy2b4sp" path="res://assets/sprites/boss/png17.png" id="5_cmhan"]
+[ext_resource type="PackedScene" uid="uid://4n2ppvs6ckaw" path="res://global/fireFX.tscn" id="6_vmkma"]
+[ext_resource type="AudioStream" uid="uid://clg0xwpvsddut" path="res://assets/audio/effects/roar.mp3" id="8_aayga"]
+[ext_resource type="AudioStream" uid="uid://cxpdg0grqypla" path="res://assets/audio/effects/lunge.mp3" id="9_568al"]
+[ext_resource type="AudioStream" uid="uid://dtr76may0hdc3" path="res://assets/audio/effects/boss_hit.mp3" id="10_td26v"]
+[ext_resource type="AudioStream" uid="uid://bdxkt6ohdwllo" path="res://assets/audio/effects/explosion.ogg" id="11_use16"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cnaqy"]
+shader = ExtResource("1_vdesb")
+shader_parameter/resolution = 64.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xwpqe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ji7wt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ob0m1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ed07h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x0o3a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cmhan")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nsexc"]
+radius = 10.6338
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k7pjc"]
+radius = 140.089
+
+[node name="Great Indigestion" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_yucss")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_cnaqy")
+sprite_frames = SubResource("SpriteFrames_xwpqe")
+autoplay = "default"
+frame_progress = 0.665121
+
+[node name="Body" type="Area2D" parent="."]
+
+[node name="Hitbox" type="CollisionShape2D" parent="Body"]
+scale = Vector2(14.2, 14.2)
+shape = SubResource("CircleShape2D_nsexc")
+
+[node name="Collision Box" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_k7pjc")
+
+[node name="fireFX" parent="." instance=ExtResource("6_vmkma")]
+scale = Vector2(11.68, 11.68)
+frame_progress = 0.865864
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="Roar" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_aayga")
+
+[node name="Lunge" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_568al")
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_td26v")
+
+[node name="Explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_use16")
+
+[connection signal="area_entered" from="Body" to="." method="_on_body_area_entered"]
+[connection signal="body_entered" from="Body" to="." method="_on_body_body_entered"]
+[connection signal="animation_looped" from="fireFX" to="." method="_on_fire_fx_animation_looped"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

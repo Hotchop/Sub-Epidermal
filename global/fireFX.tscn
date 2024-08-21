@@ -1,7 +1,24 @@
-[gd_scene load_steps=17 format=3 uid="uid://4n2ppvs6ckaw"]
+[gd_scene load_steps=22 format=3 uid="uid://4n2ppvs6ckaw"]
 
 [ext_resource type="Texture2D" uid="uid://cxomdcyamxvh" path="res://assets/fx/Yellow Effect Bullet Impact Explosion 32x32.png" id="1_u77nj"]
+[ext_resource type="Texture2D" uid="uid://dg4qmy67nlwy" path="res://assets/fx/Red Effect Bullet Impact Explosion 32x32.png" id="1_ue6by"]
 [ext_resource type="Texture2D" uid="uid://c1b0kab7nbhfe" path="res://assets/fx/Green Effect Bullet Impact Explosion 32x32.png" id="2_niiit"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46bbq"]
+atlas = ExtResource("1_ue6by")
+region = Rect2(192, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dijnb"]
+atlas = ExtResource("1_ue6by")
+region = Rect2(224, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_civ3m"]
+atlas = ExtResource("1_ue6by")
+region = Rect2(256, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ia8ix"]
+atlas = ExtResource("1_ue6by")
+region = Rect2(288, 160, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cdehy"]
 atlas = ExtResource("1_u77nj")
@@ -53,6 +70,26 @@ region = Rect2(448, 448, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4bwrw"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46bbq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dijnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_civ3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ia8ix")
+}],
+"loop": true,
+"name": &"bossExplosion",
+"speed": 8.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cdehy")
@@ -126,7 +163,8 @@ turbulence_noise_speed_random = 2.69
 
 [node name="fireFX" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_4bwrw")
-animation = &"virusExplosion"
+animation = &"bossExplosion"
+frame_progress = 0.836705
 
 [node name="firesparks" type="GPUParticles2D" parent="."]
 show_behind_parent = true
