@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://b447cf2ojg12f"]
 
 [ext_resource type="Texture2D" uid="uid://dlq2q2n2rboik" path="res://assets/sprites/shootingEnemy/shooter1.png" id="1_blw1m"]
-[ext_resource type="Script" path="res://entities/shooter.gd" id="1_gaup1"]
+[ext_resource type="Script" uid="uid://bak3mk7la7dyi" path="res://entities/shooter.gd" id="1_gaup1"]
 [ext_resource type="Texture2D" uid="uid://dwn8krl7k1aft" path="res://assets/sprites/shootingEnemy/shooter2.png" id="2_6vtwk"]
-[ext_resource type="Shader" path="res://entities/great_indigestion.gdshader" id="2_81jpt"]
+[ext_resource type="Shader" uid="uid://bl08na4tosa8u" path="res://entities/great_indigestion.gdshader" id="2_81jpt"]
 [ext_resource type="Texture2D" uid="uid://dop6pwahp20ki" path="res://assets/sprites/shootingEnemy/shooter3.png" id="3_c5oiq"]
 [ext_resource type="Texture2D" uid="uid://dig8pbcm3fhhd" path="res://assets/sprites/shootingEnemy/shooter4.png" id="4_ufv3u"]
 [ext_resource type="PackedScene" uid="uid://4n2ppvs6ckaw" path="res://global/fireFX.tscn" id="5_ggovo"]

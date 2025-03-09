@@ -12,7 +12,7 @@ const TORPEDO = preload("res://assets/audio/effects/torpedo.ogg")
 const MAX_FX = 0.0
 const MIN_FX = -50.0
 
-@onready var fxVolume = SaveSystem.save.get_value("Save","music")
+@onready var fxVolume = SaveSystem.save.get_value("Save","fx")
 	
 
 func play_fx(fx: AudioStream, volume = fxVolume):

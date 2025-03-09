@@ -14,10 +14,9 @@ config/name="Sub Epidermal"
 config/description="Jump aboard the Sub Epidermal, and clear the patients body of it's infection, before time runs out..."
 config/version="1.0.0"
 run/main_scene="res://scenes/main_menu.tscn"
-config/features=PackedStringArray("4.3", "Mobile")
+config/features=PackedStringArray("4.4", "Mobile")
 run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)
-boot_splash/image="res://assets/ui/splashscreen.png"
 boot_splash/fullsize=false
 config/icon="res://assets/sprites/submarine.png"
 
@@ -34,6 +33,7 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
 window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 mouse_cursor/custom_image="res://assets/ui/Cursor.png"
 
 [editor]
@@ -44,6 +44,7 @@ movie_writer/disable_vsync=true
 [global_group]
 
 Projectile="An enemy projectile"
+Torpedo="Player Torpedo Projectile"
 
 [input]
 
@@ -89,3 +90,4 @@ ui_left_click={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

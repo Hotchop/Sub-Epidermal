@@ -1,9 +1,9 @@
 [gd_scene load_steps=26 format=3 uid="uid://bt7ayrp5s44g1"]
 
 [ext_resource type="Texture2D" uid="uid://cyx6a3jow3ny5" path="res://assets/fx/bubble.png" id="1_0nvqg"]
-[ext_resource type="Script" path="res://scenes/game_over.gd" id="1_xtjwk"]
+[ext_resource type="Script" uid="uid://dba2vth1mt2ng" path="res://scenes/game_over.gd" id="1_xtjwk"]
 [ext_resource type="Texture2D" uid="uid://1ph816ftmrum" path="res://assets/sprites/rocks.png" id="3_uw5fu"]
-[ext_resource type="Script" path="res://entities/player.gd" id="3_wkf2l"]
+[ext_resource type="Script" uid="uid://rcml0tacvvru" path="res://entities/player.gd" id="3_wkf2l"]
 [ext_resource type="Texture2D" uid="uid://c4g4ivnt7jskx" path="res://assets/sprites/submarine_sheet.png" id="4_5q4ff"]
 [ext_resource type="FontFile" uid="uid://c68ejhvbwea2s" path="res://assets/fonts/Bungee_Tint/BungeeTint-Regular.ttf" id="5_nu5ej"]
 [ext_resource type="PackedScene" uid="uid://4n2ppvs6ckaw" path="res://global/fireFX.tscn" id="5_s2bon"]

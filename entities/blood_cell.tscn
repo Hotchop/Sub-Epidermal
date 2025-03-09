@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cc2l1ks8shknq"]
 
-[ext_resource type="Script" path="res://entities/blood_cell.gd" id="1_e6wya"]
+[ext_resource type="Script" uid="uid://cm3uyfnrutln2" path="res://entities/blood_cell.gd" id="1_e6wya"]
 [ext_resource type="Texture2D" uid="uid://dubr72qxfc7xh" path="res://assets/sprites/blood_cell.png" id="1_gkula"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n1tv3"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=38 format=3 uid="uid://dtiikx4w6vkwn"]
 
-[ext_resource type="Script" path="res://scenes/heart_level.gd" id="1_2io76"]
+[ext_resource type="Script" uid="uid://b8jdhoo2jjyb0" path="res://scenes/heart_level.gd" id="1_2io76"]
 [ext_resource type="PackedScene" uid="uid://d18b8gy8y6nfl" path="res://maps/heart_map.tscn" id="1_n6bvx"]
 [ext_resource type="PackedScene" uid="uid://bacxitw523mgg" path="res://entities/player.tscn" id="1_ol24k"]
 [ext_resource type="PackedScene" uid="uid://d07e7av40yjvt" path="res://entities/stone.tscn" id="3_h1jfv"]
@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b447cf2ojg12f" path="res://entities/shooter.tscn" id="10_hces6"]
 [ext_resource type="LabelSettings" uid="uid://bxq8exieglrod" path="res://assets/fonts/Bars.tres" id="10_m4dqr"]
 [ext_resource type="Material" uid="uid://0q2qge31tat5" path="res://resources/pixelator.tres" id="11_0ve04"]
-[ext_resource type="Script" path="res://scenes/pause.gd" id="13_4ksgi"]
+[ext_resource type="Script" uid="uid://bbtubdr33gh84" path="res://scenes/pause.gd" id="13_4ksgi"]
 [ext_resource type="LabelSettings" uid="uid://cki0inscy3gsp" path="res://assets/fonts/Title.tres" id="13_kuov5"]
 [ext_resource type="FontFile" uid="uid://cqwhbcwuhylf0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="14_62aqj"]
 
@@ -126,13 +126,6 @@ script = ExtResource("1_2io76")
 
 [node name="Backdrops" type="Node2D" parent="."]
 position = Vector2(992, 537)
-
-[node name="Background" type="ColorRect" parent="Backdrops"]
-offset_left = -16005.0
-offset_top = -7616.0
-offset_right = 17765.0
-offset_bottom = 8849.0
-color = Color(0.25098, 0.027451, 0.027451, 1)
 
 [node name="Red Path" type="ColorRect" parent="Backdrops"]
 offset_left = -64.0
@@ -316,7 +309,7 @@ position = Vector2(2133, -1019)
 
 [node name="Charger5" parent="Enemies" instance=ExtResource("7_ifs15")]
 material = ExtResource("11_0ve04")
-position = Vector2(1952, 721)
+position = Vector2(2035, 637)
 
 [node name="Charger6" parent="Enemies" instance=ExtResource("7_ifs15")]
 material = ExtResource("11_0ve04")

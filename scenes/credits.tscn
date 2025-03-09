@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://s4i3qj4b2i4q"]
 
-[ext_resource type="Script" path="res://scenes/credits.gd" id="1_fep5g"]
+[ext_resource type="Script" uid="uid://b03jwa0tyeynt" path="res://scenes/credits.gd" id="1_fep5g"]
 [ext_resource type="Texture2D" uid="uid://brs6lu4wxwbwu" path="res://assets/sprites/white_cell.png" id="2_yx4ti"]
 [ext_resource type="Texture2D" uid="uid://dgfxa34y4uwbs" path="res://assets/ui/Hotchop.png" id="3_nm8ht"]
 [ext_resource type="Texture2D" uid="uid://cp15uvcv3xpjn" path="res://assets/GMTK assets/gmtk2024-logo.png" id="4_m5p42"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://cyw6ds3swfgl8"]
 
 [ext_resource type="Texture2D" uid="uid://bwpptggtw4p61" path="res://assets/sprites/boss/png13.png" id="1_ji7wt"]
-[ext_resource type="Shader" path="res://entities/great_indigestion.gdshader" id="1_vdesb"]
-[ext_resource type="Script" path="res://entities/great_indigestion.gd" id="1_yucss"]
+[ext_resource type="Shader" uid="uid://bl08na4tosa8u" path="res://entities/great_indigestion.gdshader" id="1_vdesb"]
+[ext_resource type="Script" uid="uid://umydhmpap2jb" path="res://entities/great_indigestion.gd" id="1_yucss"]
 [ext_resource type="Texture2D" uid="uid://bartn304hb5dr" path="res://assets/sprites/boss/png14.png" id="2_ob0m1"]
 [ext_resource type="Texture2D" uid="uid://dotf0ybmcwb27" path="res://assets/sprites/boss/png15.png" id="3_ed07h"]
 [ext_resource type="Texture2D" uid="uid://daaxdf5xfnjr1" path="res://assets/sprites/boss/png16.png" id="4_x0o3a"]

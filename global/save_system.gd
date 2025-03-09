@@ -25,6 +25,7 @@ func load_file():
 		Game.stage2 = save.get_value("Save","stage2")
 		Game.hardMode = save.get_value("Save","hardMode")
 		AudioManager.chage_volume(save.get_value("Save","music"))
+		
 	
 
 func save_file():

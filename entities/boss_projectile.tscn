@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://eswkxutspg6u"]
+[gd_scene load_steps=12 format=3 uid="uid://eswkxutspg6u"]
 
 [ext_resource type="Texture2D" uid="uid://cqteovw1qc77" path="res://assets/sprites/shootingEnemy/proyectile.png" id="1_6gqkf"]
-[ext_resource type="Script" path="res://entities/boss_projectile.gd" id="1_m8k3v"]
-[ext_resource type="Shader" path="res://entities/great_indigestion.gdshader" id="2_p2qyj"]
+[ext_resource type="Script" uid="uid://d4iwv54snks3r" path="res://entities/boss_projectile.gd" id="1_m8k3v"]
+[ext_resource type="Shader" uid="uid://bl08na4tosa8u" path="res://entities/great_indigestion.gdshader" id="2_p2qyj"]
+[ext_resource type="Texture2D" uid="uid://c1b0kab7nbhfe" path="res://assets/fx/Green Effect Bullet Impact Explosion 32x32.png" id="4_gumvp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6u5of"]
 shader = ExtResource("2_p2qyj")
@@ -11,10 +12,49 @@ shader_parameter/resolution = 64.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_l6w65"]
 radius = 37.6563
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj4us"]
+atlas = ExtResource("4_gumvp")
+region = Rect2(512, 352, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frqqq"]
+atlas = ExtResource("4_gumvp")
+region = Rect2(544, 352, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sv0p"]
+atlas = ExtResource("4_gumvp")
+region = Rect2(576, 352, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8k130"]
+atlas = ExtResource("4_gumvp")
+region = Rect2(608, 352, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yadpe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj4us")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frqqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sv0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8k130")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 10.0
+}]
+
 [node name="Boss Projectile" type="Area2D" groups=["Projectile"]]
 script = ExtResource("1_m8k3v")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Projectile"]]
 material = SubResource("ShaderMaterial_6u5of")
 position = Vector2(0, 2)
 rotation = 0.265214
@@ -28,4 +68,11 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 3.14159
+scale = Vector2(6.05871, 15.9859)
+sprite_frames = SubResource("SpriteFrames_yadpe")
+animation = &"explode"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

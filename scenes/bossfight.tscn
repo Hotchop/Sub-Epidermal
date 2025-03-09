@@ -1,10 +1,10 @@
 [gd_scene load_steps=16 format=3 uid="uid://dn2ae1gug8mkf"]
 
 [ext_resource type="PackedScene" uid="uid://dmnrhyy5bkisr" path="res://maps/stomach_map.tscn" id="1_rbikw"]
-[ext_resource type="Script" path="res://scenes/bossfight.gd" id="1_tat48"]
+[ext_resource type="Script" uid="uid://b82utym45oata" path="res://scenes/bossfight.gd" id="1_tat48"]
 [ext_resource type="PackedScene" uid="uid://cyw6ds3swfgl8" path="res://entities/great_indigestion.tscn" id="2_2oq1l"]
 [ext_resource type="PackedScene" uid="uid://bacxitw523mgg" path="res://entities/player.tscn" id="2_rro3t"]
-[ext_resource type="Script" path="res://scenes/pause.gd" id="3_egh3g"]
+[ext_resource type="Script" uid="uid://bbtubdr33gh84" path="res://scenes/pause.gd" id="3_egh3g"]
 [ext_resource type="Texture2D" uid="uid://d1e56aeigpka1" path="res://assets/ui/UI Pack.png" id="3_lyw5r"]
 [ext_resource type="LabelSettings" uid="uid://cki0inscy3gsp" path="res://assets/fonts/Title.tres" id="4_41r5b"]
 [ext_resource type="LabelSettings" uid="uid://bxq8exieglrod" path="res://assets/fonts/Bars.tres" id="4_ibb45"]

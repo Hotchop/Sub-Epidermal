@@ -1,14 +1,14 @@
 [gd_scene load_steps=44 format=3 uid="uid://16xotjtury38"]
 
-[ext_resource type="Script" path="res://scenes/heart_end.gd" id="1_0vby1"]
+[ext_resource type="Script" uid="uid://daimsdv3jox1b" path="res://scenes/heart_end.gd" id="1_0vby1"]
 [ext_resource type="PackedScene" uid="uid://d18b8gy8y6nfl" path="res://maps/heart_map.tscn" id="1_3cq46"]
-[ext_resource type="Script" path="res://entities/player.gd" id="2_g3fhw"]
+[ext_resource type="Script" uid="uid://rcml0tacvvru" path="res://entities/player.gd" id="2_g3fhw"]
 [ext_resource type="Texture2D" uid="uid://cyx6a3jow3ny5" path="res://assets/fx/bubble.png" id="3_pgyey"]
 [ext_resource type="Texture2D" uid="uid://c4g4ivnt7jskx" path="res://assets/sprites/submarine_sheet.png" id="4_xi4hf"]
-[ext_resource type="Script" path="res://entities/big_stone.gd" id="5_ahhd6"]
+[ext_resource type="Script" uid="uid://e8j7h7d8jwwx" path="res://entities/big_stone.gd" id="5_ahhd6"]
 [ext_resource type="Texture2D" uid="uid://1ph816ftmrum" path="res://assets/sprites/rocks.png" id="6_m5yc7"]
 [ext_resource type="PackedScene" uid="uid://b8a1yhkf5rqso" path="res://entities/white_cell.tscn" id="7_7huv6"]
-[ext_resource type="Script" path="res://global/dialog_popup.gd" id="8_jq3uc"]
+[ext_resource type="Script" uid="uid://d3tr1xe0ybsyl" path="res://global/dialog_popup.gd" id="8_jq3uc"]
 [ext_resource type="Texture2D" uid="uid://bydde0dkqphc7" path="res://assets/ui/Text Banner.png" id="9_uvpq6"]
 [ext_resource type="Texture2D" uid="uid://dhvyd34ygbf8p" path="res://assets/sprites/submarine.png" id="10_sjlwx"]
 [ext_resource type="FontFile" uid="uid://cqwhbcwuhylf0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="11_1r8v5"]
@@ -193,8 +193,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rk83o"]
 _data = {
-"RESET": SubResource("Animation_klbpw"),
-"popup": SubResource("Animation_fw25t")
+&"RESET": SubResource("Animation_klbpw"),
+&"popup": SubResource("Animation_fw25t")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n33uf"]
@@ -440,8 +440,8 @@ tracks/8/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_555dv"]
 _data = {
-"RESET": SubResource("Animation_ckhbq"),
-"cells_help": SubResource("Animation_ys3gk")
+&"RESET": SubResource("Animation_ckhbq"),
+&"cells_help": SubResource("Animation_ys3gk")
 }
 
 [node name="Level1 Ending" type="Node2D"]

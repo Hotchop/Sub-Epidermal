@@ -41,9 +41,9 @@ func _on_body_body_entered(body: Node2D) -> void:
 
 
 func _on_body_area_entered(area: Area2D) -> void:
-	if area.name == "Torpedo":
+	if area.is_in_group("Torpedo"):
+		area.torpedo_explode()
 		FxManager.play_fx(FxManager.HIT)
-		area.queue_free()
 		get_hit(DAMAGE)
 
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b68pavhfeiput"]
+[gd_scene load_steps=12 format=3 uid="uid://b68pavhfeiput"]
 
-[ext_resource type="Script" path="res://entities/proyectile.gd" id="1_e8hom"]
+[ext_resource type="Script" uid="uid://di5tou8b8rxcl" path="res://entities/proyectile.gd" id="1_e8hom"]
 [ext_resource type="Texture2D" uid="uid://cqteovw1qc77" path="res://assets/sprites/shootingEnemy/proyectile.png" id="1_nioie"]
-[ext_resource type="Shader" path="res://entities/great_indigestion.gdshader" id="2_26fhi"]
+[ext_resource type="Shader" uid="uid://bl08na4tosa8u" path="res://entities/great_indigestion.gdshader" id="2_26fhi"]
+[ext_resource type="Texture2D" uid="uid://c1b0kab7nbhfe" path="res://assets/fx/Green Effect Bullet Impact Explosion 32x32.png" id="4_atn0f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oyied"]
 shader = ExtResource("2_26fhi")
@@ -10,6 +11,45 @@ shader_parameter/resolution = 64.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8rvbm"]
 radius = 37.6563
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj4us"]
+atlas = ExtResource("4_atn0f")
+region = Rect2(512, 352, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frqqq"]
+atlas = ExtResource("4_atn0f")
+region = Rect2(544, 352, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sv0p"]
+atlas = ExtResource("4_atn0f")
+region = Rect2(576, 352, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8k130"]
+atlas = ExtResource("4_atn0f")
+region = Rect2(608, 352, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lpwcr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj4us")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frqqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sv0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8k130")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 10.0
+}]
 
 [node name="Proyectile" type="Area2D" groups=["Projectile"]]
 scale = Vector2(0.2, 0.2)
@@ -29,4 +69,10 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Projectile"]]
+scale = Vector2(-2.92485, -2.92485)
+sprite_frames = SubResource("SpriteFrames_lpwcr")
+animation = &"explode"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

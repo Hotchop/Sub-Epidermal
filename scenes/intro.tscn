@@ -1,11 +1,11 @@
 [gd_scene load_steps=32 format=3 uid="uid://xrr02jhnc0vy"]
 
-[ext_resource type="Script" path="res://scenes/intro.gd" id="1_7vwk6"]
+[ext_resource type="Script" uid="uid://caxrwb70dabci" path="res://scenes/intro.gd" id="1_7vwk6"]
 [ext_resource type="PackedScene" uid="uid://d18b8gy8y6nfl" path="res://maps/heart_map.tscn" id="1_h6r5w"]
-[ext_resource type="Script" path="res://entities/player.gd" id="2_a2f3s"]
+[ext_resource type="Script" uid="uid://rcml0tacvvru" path="res://entities/player.gd" id="2_a2f3s"]
 [ext_resource type="Texture2D" uid="uid://cyx6a3jow3ny5" path="res://assets/fx/bubble.png" id="3_b7jp1"]
 [ext_resource type="Texture2D" uid="uid://c4g4ivnt7jskx" path="res://assets/sprites/submarine_sheet.png" id="4_h3k8i"]
-[ext_resource type="Script" path="res://global/dialog_popup.gd" id="5_suk1s"]
+[ext_resource type="Script" uid="uid://d3tr1xe0ybsyl" path="res://global/dialog_popup.gd" id="5_suk1s"]
 [ext_resource type="Texture2D" uid="uid://bydde0dkqphc7" path="res://assets/ui/Text Banner.png" id="6_5nuox"]
 [ext_resource type="FontFile" uid="uid://cqwhbcwuhylf0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="7_s4xsb"]
 [ext_resource type="Texture2D" uid="uid://dhvyd34ygbf8p" path="res://assets/sprites/submarine.png" id="8_180vi"]
@@ -152,8 +152,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rk83o"]
 _data = {
-"RESET": SubResource("Animation_klbpw"),
-"popup": SubResource("Animation_fw25t")
+&"RESET": SubResource("Animation_klbpw"),
+&"popup": SubResource("Animation_fw25t")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gp0rx"]
@@ -316,8 +316,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ks4md"]
 _data = {
-"RESET": SubResource("Animation_5o1nb"),
-"intro": SubResource("Animation_bb2np")
+&"RESET": SubResource("Animation_5o1nb"),
+&"intro": SubResource("Animation_bb2np")
 }
 
 [node name="Intro" type="Node2D"]

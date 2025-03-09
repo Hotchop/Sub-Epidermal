@@ -46,12 +46,20 @@ func _on_music_slider_value_changed(value: float) -> void:
 func _on_effects_slider_value_changed(value: float) -> void:
 	FxManager.change_fx(value)
 
+func _on_windowed_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+func _on_fullscreen_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
 func _on_back_pressed() -> void:
 	SaveSystem.save_file()
 	FxManager.play_fx(FxManager.BUTTON_CLICK)
 	$Settings.visible = false
 	$Menu.visible = true
+
 
 
 func _on_effects_slider_drag_ended(_value_changed: bool) -> void:

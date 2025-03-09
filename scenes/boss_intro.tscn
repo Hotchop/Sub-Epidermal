@@ -1,9 +1,9 @@
 [gd_scene load_steps=49 format=3 uid="uid://cbtj4w77yrleg"]
 
-[ext_resource type="Script" path="res://scenes/boss_intro.gd" id="1_78e8q"]
+[ext_resource type="Script" uid="uid://dyrhcjjniubum" path="res://scenes/boss_intro.gd" id="1_78e8q"]
 [ext_resource type="PackedScene" uid="uid://dmnrhyy5bkisr" path="res://maps/stomach_map.tscn" id="2_y7are"]
-[ext_resource type="Script" path="res://entities/great_indigestion.gd" id="3_6j2he"]
-[ext_resource type="Shader" path="res://entities/great_indigestion.gdshader" id="3_u3cly"]
+[ext_resource type="Script" uid="uid://umydhmpap2jb" path="res://entities/great_indigestion.gd" id="3_6j2he"]
+[ext_resource type="Shader" uid="uid://bl08na4tosa8u" path="res://entities/great_indigestion.gdshader" id="3_u3cly"]
 [ext_resource type="Texture2D" uid="uid://bwpptggtw4p61" path="res://assets/sprites/boss/png13.png" id="4_w3rk8"]
 [ext_resource type="Texture2D" uid="uid://bartn304hb5dr" path="res://assets/sprites/boss/png14.png" id="5_u2l4c"]
 [ext_resource type="Texture2D" uid="uid://dotf0ybmcwb27" path="res://assets/sprites/boss/png15.png" id="6_mo1h8"]
@@ -14,10 +14,10 @@
 [ext_resource type="AudioStream" uid="uid://cxpdg0grqypla" path="res://assets/audio/effects/lunge.mp3" id="11_mt7qb"]
 [ext_resource type="AudioStream" uid="uid://dtr76may0hdc3" path="res://assets/audio/effects/boss_hit.mp3" id="12_7x70q"]
 [ext_resource type="AudioStream" uid="uid://bdxkt6ohdwllo" path="res://assets/audio/effects/explosion.ogg" id="13_xi6l3"]
-[ext_resource type="Script" path="res://entities/player.gd" id="14_k3k4f"]
+[ext_resource type="Script" uid="uid://rcml0tacvvru" path="res://entities/player.gd" id="14_k3k4f"]
 [ext_resource type="Texture2D" uid="uid://cyx6a3jow3ny5" path="res://assets/fx/bubble.png" id="15_simrg"]
 [ext_resource type="Texture2D" uid="uid://c4g4ivnt7jskx" path="res://assets/sprites/submarine_sheet.png" id="16_lsfqp"]
-[ext_resource type="Script" path="res://global/dialog_popup.gd" id="17_is8o1"]
+[ext_resource type="Script" uid="uid://d3tr1xe0ybsyl" path="res://global/dialog_popup.gd" id="17_is8o1"]
 [ext_resource type="Texture2D" uid="uid://bydde0dkqphc7" path="res://assets/ui/Text Banner.png" id="18_6v71w"]
 [ext_resource type="FontFile" uid="uid://cqwhbcwuhylf0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="19_amkfa"]
 [ext_resource type="Texture2D" uid="uid://dhvyd34ygbf8p" path="res://assets/sprites/submarine.png" id="20_alygp"]
@@ -198,8 +198,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rk83o"]
 _data = {
-"RESET": SubResource("Animation_klbpw"),
-"popup": SubResource("Animation_fw25t")
+&"RESET": SubResource("Animation_klbpw"),
+&"popup": SubResource("Animation_fw25t")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eb0dd"]
@@ -437,8 +437,8 @@ tracks/9/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_veuk2"]
 _data = {
-"RESET": SubResource("Animation_wxvms"),
-"boss_enter": SubResource("Animation_w5fyo")
+&"RESET": SubResource("Animation_wxvms"),
+&"boss_enter": SubResource("Animation_w5fyo")
 }
 
 [node name="Boss Intro" type="Node2D"]

@@ -2,11 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://cyx6a3jow3ny5" path="res://assets/fx/bubble.png" id="1_1p776"]
 [ext_resource type="Texture2D" uid="uid://cc20vs7dgi6b7" path="res://assets/sprites/Volcano Drake Boss.png" id="1_8ukbh"]
-[ext_resource type="Script" path="res://scenes/ending.gd" id="1_14jki"]
+[ext_resource type="Script" uid="uid://dw1knyrq87sbb" path="res://scenes/ending.gd" id="1_14jki"]
 [ext_resource type="Texture2D" uid="uid://tu61d4tsgpl5" path="res://assets/background/CityBuilder.png" id="2_5b1ts"]
-[ext_resource type="Script" path="res://entities/player.gd" id="2_le5n6"]
+[ext_resource type="Script" uid="uid://rcml0tacvvru" path="res://entities/player.gd" id="2_le5n6"]
 [ext_resource type="Texture2D" uid="uid://c4g4ivnt7jskx" path="res://assets/sprites/submarine_sheet.png" id="3_gmso4"]
-[ext_resource type="Script" path="res://global/dialog_popup.gd" id="6_hpcw0"]
+[ext_resource type="Script" uid="uid://d3tr1xe0ybsyl" path="res://global/dialog_popup.gd" id="6_hpcw0"]
 [ext_resource type="Texture2D" uid="uid://cxomdcyamxvh" path="res://assets/fx/Yellow Effect Bullet Impact Explosion 32x32.png" id="6_nketx"]
 [ext_resource type="LabelSettings" uid="uid://cki0inscy3gsp" path="res://assets/fonts/Title.tres" id="7_cio5i"]
 [ext_resource type="Texture2D" uid="uid://c1b0kab7nbhfe" path="res://assets/fx/Green Effect Bullet Impact Explosion 32x32.png" id="7_l2hs1"]
@@ -319,8 +319,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rk83o"]
 _data = {
-"RESET": SubResource("Animation_klbpw"),
-"popup": SubResource("Animation_fw25t")
+&"RESET": SubResource("Animation_klbpw"),
+&"popup": SubResource("Animation_fw25t")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0i2p8"]
@@ -624,8 +624,8 @@ tracks/11/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bwi8u"]
 _data = {
-"RESET": SubResource("Animation_h18up"),
-"ending": SubResource("Animation_omqgl")
+&"RESET": SubResource("Animation_h18up"),
+&"ending": SubResource("Animation_omqgl")
 }
 
 [node name="Ending" type="Node2D"]

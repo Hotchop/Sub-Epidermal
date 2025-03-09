@@ -1,15 +1,20 @@
-[gd_scene load_steps=20 format=3 uid="uid://dr4kbeu6kj538"]
+[gd_scene load_steps=21 format=3 uid="uid://dr4kbeu6kj538"]
 
 [ext_resource type="Texture2D" uid="uid://dubr72qxfc7xh" path="res://assets/sprites/blood_cell.png" id="1_ogjf1"]
 [ext_resource type="PackedScene" uid="uid://bacxitw523mgg" path="res://entities/player.tscn" id="1_xn652"]
-[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_yqe5n"]
+[ext_resource type="Script" uid="uid://5pqwg41a6ocu" path="res://scenes/main_menu.gd" id="1_yqe5n"]
 [ext_resource type="Texture2D" uid="uid://cp15uvcv3xpjn" path="res://assets/GMTK assets/gmtk2024-logo.png" id="2_3q82l"]
 [ext_resource type="Texture2D" uid="uid://cyx6a3jow3ny5" path="res://assets/fx/bubble.png" id="3_5tdj8"]
 [ext_resource type="LabelSettings" uid="uid://cki0inscy3gsp" path="res://assets/fonts/Title.tres" id="6_idlau"]
 [ext_resource type="FontFile" uid="uid://cqwhbcwuhylf0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="7_h3r4e"]
 [ext_resource type="Texture2D" uid="uid://brs6lu4wxwbwu" path="res://assets/sprites/white_cell.png" id="9_6qul6"]
+[ext_resource type="ButtonGroup" uid="uid://bjg0kubbh74o2" path="res://global/Screen Settings.tres" id="9_fesiw"]
 [ext_resource type="LabelSettings" uid="uid://bxq8exieglrod" path="res://assets/fonts/Bars.tres" id="9_vx3g3"]
 [ext_resource type="LabelSettings" uid="uid://be5y4na6117ec" path="res://assets/fonts/Text.tres" id="10_uranr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpjag"]
+atlas = ExtResource("1_ogjf1")
+region = Rect2(2, 3, 194, 94)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ankp3"]
 particle_flag_disable_z = true
@@ -17,10 +22,6 @@ emission_shape = 3
 emission_box_extents = Vector3(1000, 1, 1)
 gravity = Vector3(0, -500, 0)
 turbulence_enabled = true
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wpjag"]
-atlas = ExtResource("1_ogjf1")
-region = Rect2(2, 3, 194, 94)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_u7yd6"]
 
@@ -72,20 +73,20 @@ color = Color(0.25098, 0.027451, 0.027451, 1)
 
 [node name="Cells" type="GPUParticles2D" parent="."]
 position = Vector2(925, 1079)
-process_material = SubResource("ParticleProcessMaterial_ankp3")
 texture = SubResource("AtlasTexture_wpjag")
 lifetime = 5.0
 speed_scale = 2.0
 randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ankp3")
 
 [node name="Bubbles" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_u7yd6")
 position = Vector2(1477, 380)
 amount = 2
-process_material = SubResource("ParticleProcessMaterial_teusu")
 texture = ExtResource("3_5tdj8")
 lifetime = 5.0
 speed_scale = 3.0
+process_material = SubResource("ParticleProcessMaterial_teusu")
 
 [node name="Player" parent="." instance=ExtResource("1_xn652")]
 position = Vector2(1461, 405)
@@ -178,8 +179,10 @@ scale = Vector2(4, 4)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings"]
 layout_mode = 0
-offset_right = 106.0
-offset_bottom = 102.0
+offset_left = 16.0
+offset_right = 164.0
+offset_bottom = 172.0
+scale = Vector2(0.83, 0.83)
 
 [node name="Music" type="Label" parent="Settings/VBoxContainer"]
 layout_mode = 2
@@ -203,6 +206,25 @@ modulate = Color(1, 1, 0, 1)
 layout_mode = 2
 max_value = 50.0
 value = 50.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Windowed" type="Button" parent="Settings/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_h3r4e")
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("9_fesiw")
+text = "Windowed"
+
+[node name="Fullscreen" type="Button" parent="Settings/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_h3r4e")
+toggle_mode = true
+button_group = ExtResource("9_fesiw")
+text = "Fullscreen"
 
 [node name="CenterContainer" type="CenterContainer" parent="Settings/VBoxContainer"]
 layout_mode = 2
@@ -275,6 +297,8 @@ horizontal_alignment = 1
 [connection signal="value_changed" from="Settings/VBoxContainer/Music Slider" to="." method="_on_music_slider_value_changed"]
 [connection signal="drag_ended" from="Settings/VBoxContainer/Effects Slider" to="." method="_on_effects_slider_drag_ended"]
 [connection signal="value_changed" from="Settings/VBoxContainer/Effects Slider" to="." method="_on_effects_slider_value_changed"]
+[connection signal="toggled" from="Settings/VBoxContainer/HBoxContainer/Windowed" to="." method="_on_windowed_toggled"]
+[connection signal="toggled" from="Settings/VBoxContainer/HBoxContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="pressed" from="Settings/VBoxContainer/CenterContainer/Back" to="." method="_on_back_pressed"]
 [connection signal="mouse_entered" from="Reset Progress" to="." method="_on_reset_progress_mouse_entered"]
 [connection signal="mouse_exited" from="Reset Progress" to="." method="_on_reset_progress_mouse_exited"]

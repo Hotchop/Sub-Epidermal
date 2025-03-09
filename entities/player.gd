@@ -71,7 +71,6 @@ func _on_fire_fx_animation_finished() -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print(area.name," entered")
 	if area.is_in_group("Projectile"):
 		FxManager.play_fx(FxManager.HIT)
 		area.queue_free()

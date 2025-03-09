@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dt5gcj2pa2cpc"]
 
 [ext_resource type="Texture2D" uid="uid://bydde0dkqphc7" path="res://assets/ui/Text Banner.png" id="1_25tkb"]
-[ext_resource type="Script" path="res://global/dialog_popup.gd" id="1_jmipg"]
+[ext_resource type="Script" uid="uid://d3tr1xe0ybsyl" path="res://global/dialog_popup.gd" id="1_jmipg"]
 [ext_resource type="Texture2D" uid="uid://dhvyd34ygbf8p" path="res://assets/sprites/submarine.png" id="2_dcyqk"]
 [ext_resource type="FontFile" uid="uid://cqwhbcwuhylf0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="3_dvryk"]
 
@@ -62,8 +62,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rk83o"]
 _data = {
-"RESET": SubResource("Animation_klbpw"),
-"popup": SubResource("Animation_fw25t")
+&"RESET": SubResource("Animation_klbpw"),
+&"popup": SubResource("Animation_fw25t")
 }
 
 [node name="Dialog Popup" type="Control"]
