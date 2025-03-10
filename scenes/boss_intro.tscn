@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://cbtj4w77yrleg"]
+[gd_scene load_steps=51 format=3 uid="uid://cbtj4w77yrleg"]
 
 [ext_resource type="Script" uid="uid://dyrhcjjniubum" path="res://scenes/boss_intro.gd" id="1_78e8q"]
 [ext_resource type="PackedScene" uid="uid://dmnrhyy5bkisr" path="res://maps/stomach_map.tscn" id="2_y7are"]
@@ -22,8 +22,10 @@
 [ext_resource type="FontFile" uid="uid://cqwhbcwuhylf0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="19_amkfa"]
 [ext_resource type="Texture2D" uid="uid://dhvyd34ygbf8p" path="res://assets/sprites/submarine.png" id="20_alygp"]
 [ext_resource type="Texture2D" uid="uid://djj87xvkw2exb" path="res://assets/ui/AllButtons.png" id="21_s85m8"]
+[ext_resource type="AudioStream" uid="uid://b4myg5kvoflln" path="res://assets/audio/effects/typing.ogg" id="22_48o80"]
 [ext_resource type="LabelSettings" uid="uid://be5y4na6117ec" path="res://assets/fonts/Text.tres" id="22_eumyq"]
 [ext_resource type="LabelSettings" uid="uid://cki0inscy3gsp" path="res://assets/fonts/Title.tres" id="23_2l4cb"]
+[ext_resource type="PackedScene" uid="uid://d36brsucwp7d8" path="res://entities/loading_bar.tscn" id="24_yt56g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w8fds"]
 shader = ExtResource("3_u3cly")
@@ -510,10 +512,10 @@ canShoot = false
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Player"]
 material = SubResource("CanvasItemMaterial_4hwx4")
 amount = 2
-process_material = SubResource("ParticleProcessMaterial_mc3cn")
 texture = ExtResource("15_simrg")
 lifetime = 2.0
 speed_scale = 1.5
+process_material = SubResource("ParticleProcessMaterial_mc3cn")
 
 [node name="PointLight2D" type="PointLight2D" parent="Player"]
 position = Vector2(0, 5.33333)
@@ -610,8 +612,11 @@ flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Dialog Popup"]
 libraries = {
-"": SubResource("AnimationLibrary_rk83o")
+&"": SubResource("AnimationLibrary_rk83o")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Dialog Popup"]
+stream = ExtResource("22_48o80")
 
 [node name="Space" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(1851, 1040)
@@ -629,6 +634,14 @@ label_settings = ExtResource("22_eumyq")
 horizontal_alignment = 1
 uppercase = true
 metadata/_edit_use_anchors_ = true
+
+[node name="Loading Bar" parent="CanvasLayer" instance=ExtResource("24_yt56g")]
+visible = false
+offset_left = 1795.0
+offset_top = 965.0
+offset_right = 1833.0
+offset_bottom = 976.0
+scale = Vector2(3, 3)
 
 [node name="Great Indigestion2" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -651,7 +664,7 @@ position_smoothing_enabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_veuk2")
+&"": SubResource("AnimationLibrary_veuk2")
 }
 autoplay = "boss_enter"
 

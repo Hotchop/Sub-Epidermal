@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://d36brsucwp7d8"]
+
+[ext_resource type="Texture2D" uid="uid://d1e56aeigpka1" path="res://assets/ui/UI Pack.png" id="1_b7mo7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nb3t0"]
+atlas = ExtResource("1_b7mo7")
+region = Rect2(873, 165, 32, 5)
+margin = Rect2(2.92, 2.15, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uskw"]
+atlas = ExtResource("1_b7mo7")
+region = Rect2(582, 147, 38, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04wnu"]
+atlas = ExtResource("1_b7mo7")
+region = Rect2(633, 165, 32, 5)
+
+[node name="Loading Bar" type="TextureProgressBar"]
+offset_right = 38.0
+offset_bottom = 11.0
+texture_under = SubResource("AtlasTexture_nb3t0")
+texture_over = SubResource("AtlasTexture_5uskw")
+texture_progress = SubResource("AtlasTexture_04wnu")
+texture_progress_offset = Vector2(2.925, 2.125)

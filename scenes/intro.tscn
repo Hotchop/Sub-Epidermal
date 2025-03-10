@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://xrr02jhnc0vy"]
+[gd_scene load_steps=34 format=3 uid="uid://xrr02jhnc0vy"]
 
 [ext_resource type="Script" uid="uid://caxrwb70dabci" path="res://scenes/intro.gd" id="1_7vwk6"]
 [ext_resource type="PackedScene" uid="uid://d18b8gy8y6nfl" path="res://maps/heart_map.tscn" id="1_h6r5w"]
@@ -9,8 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://bydde0dkqphc7" path="res://assets/ui/Text Banner.png" id="6_5nuox"]
 [ext_resource type="FontFile" uid="uid://cqwhbcwuhylf0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="7_s4xsb"]
 [ext_resource type="Texture2D" uid="uid://dhvyd34ygbf8p" path="res://assets/sprites/submarine.png" id="8_180vi"]
+[ext_resource type="AudioStream" uid="uid://b4myg5kvoflln" path="res://assets/audio/effects/typing.ogg" id="10_m3r7s"]
 [ext_resource type="Texture2D" uid="uid://djj87xvkw2exb" path="res://assets/ui/AllButtons.png" id="10_qv6mm"]
 [ext_resource type="LabelSettings" uid="uid://be5y4na6117ec" path="res://assets/fonts/Text.tres" id="11_myre8"]
+[ext_resource type="PackedScene" uid="uid://d36brsucwp7d8" path="res://entities/loading_bar.tscn" id="12_n6p8m"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_u7yd6"]
 
@@ -342,10 +344,10 @@ canShoot = false
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Player"]
 material = SubResource("CanvasItemMaterial_u7yd6")
 amount = 2
-process_material = SubResource("ParticleProcessMaterial_teusu")
 texture = ExtResource("3_b7jp1")
 lifetime = 2.0
 speed_scale = 1.5
+process_material = SubResource("ParticleProcessMaterial_teusu")
 
 [node name="PointLight2D" type="PointLight2D" parent="Player"]
 position = Vector2(0, 5.33333)
@@ -433,8 +435,13 @@ flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Dialog Popup"]
 libraries = {
-"": SubResource("AnimationLibrary_rk83o")
+&"": SubResource("AnimationLibrary_rk83o")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Dialog Popup"]
+stream = ExtResource("10_m3r7s")
+volume_db = -35.404
+pitch_scale = 2.0
 
 [node name="Space" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(1851, 1040)
@@ -453,9 +460,17 @@ horizontal_alignment = 1
 uppercase = true
 metadata/_edit_use_anchors_ = true
 
+[node name="Loading Bar" parent="CanvasLayer" instance=ExtResource("12_n6p8m")]
+visible = false
+offset_left = 1795.0
+offset_top = 965.0
+offset_right = 1833.0
+offset_bottom = 976.0
+scale = Vector2(3, 3)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ks4md")
+&"": SubResource("AnimationLibrary_ks4md")
 }
 autoplay = "intro"
 

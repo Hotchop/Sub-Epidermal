@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://btfpaxq6b5j37"]
+[gd_scene load_steps=56 format=3 uid="uid://btfpaxq6b5j37"]
 
 [ext_resource type="Texture2D" uid="uid://cyx6a3jow3ny5" path="res://assets/fx/bubble.png" id="1_1p776"]
 [ext_resource type="Texture2D" uid="uid://cc20vs7dgi6b7" path="res://assets/sprites/Volcano Drake Boss.png" id="1_8ukbh"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bydde0dkqphc7" path="res://assets/ui/Text Banner.png" id="7_nt8x3"]
 [ext_resource type="Texture2D" uid="uid://dhvyd34ygbf8p" path="res://assets/sprites/submarine.png" id="8_xf0xn"]
 [ext_resource type="FontFile" uid="uid://cqwhbcwuhylf0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="9_k43on"]
+[ext_resource type="AudioStream" uid="uid://b4myg5kvoflln" path="res://assets/audio/effects/typing.ogg" id="14_7g6bj"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_u7yd6"]
 
@@ -646,10 +647,10 @@ material = SubResource("CanvasItemMaterial_u7yd6")
 position = Vector2(945, 444)
 scale = Vector2(20, 20)
 amount = 2
-process_material = SubResource("ParticleProcessMaterial_teusu")
 texture = ExtResource("1_1p776")
 lifetime = 4.0
 speed_scale = 2.0
+process_material = SubResource("ParticleProcessMaterial_teusu")
 
 [node name="Player" type="CharacterBody2D" parent="Sub Scene"]
 position = Vector2(945, 444)
@@ -885,8 +886,11 @@ flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Dialog Sub"]
 libraries = {
-"": SubResource("AnimationLibrary_rk83o")
+&"": SubResource("AnimationLibrary_rk83o")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Dialog Sub"]
+stream = ExtResource("14_7g6bj")
 
 [node name="Dialog Monster" type="Control" parent="CanvasLayer"]
 visible = false
@@ -927,12 +931,15 @@ texture = SubResource("AtlasTexture_0i2p8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Dialog Monster"]
 libraries = {
-"": SubResource("AnimationLibrary_rk83o")
+&"": SubResource("AnimationLibrary_rk83o")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Dialog Monster"]
+stream = ExtResource("14_7g6bj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_bwi8u")
+&"": SubResource("AnimationLibrary_bwi8u")
 }
 autoplay = "ending"
 

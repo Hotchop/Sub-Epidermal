@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dt5gcj2pa2cpc"]
+[gd_scene load_steps=9 format=3 uid="uid://dt5gcj2pa2cpc"]
 
 [ext_resource type="Texture2D" uid="uid://bydde0dkqphc7" path="res://assets/ui/Text Banner.png" id="1_25tkb"]
 [ext_resource type="Script" uid="uid://d3tr1xe0ybsyl" path="res://global/dialog_popup.gd" id="1_jmipg"]
 [ext_resource type="Texture2D" uid="uid://dhvyd34ygbf8p" path="res://assets/sprites/submarine.png" id="2_dcyqk"]
 [ext_resource type="FontFile" uid="uid://cqwhbcwuhylf0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="3_dvryk"]
+[ext_resource type="AudioStream" uid="uid://b4myg5kvoflln" path="res://assets/audio/effects/typing.ogg" id="5_a7h8j"]
 
 [sub_resource type="Animation" id="Animation_klbpw"]
 length = 0.001
@@ -102,5 +103,8 @@ flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_rk83o")
+&"": SubResource("AnimationLibrary_rk83o")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_a7h8j")

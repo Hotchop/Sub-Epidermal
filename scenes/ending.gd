@@ -1,6 +1,8 @@
 extends Node2D
 
 func _ready() -> void:
+	$"CanvasLayer/Dialog Sub/AudioStreamPlayer".volume_db = FxManager.fxVolume;
+	$"CanvasLayer/Dialog Monster/AudioStreamPlayer".volume_db = FxManager.fxVolume;
 	AudioManager.play_action_music()
 
 func _on_exit_pressed() -> void:
